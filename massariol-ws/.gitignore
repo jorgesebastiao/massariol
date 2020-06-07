@@ -1,0 +1,52 @@
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.class
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Build Files #
+
+bin
+target
+build/
+.gradle
+.idea/
+.vscode/
+
+# compiled output
+/dist
+/dist-server
+/tmp
+/out-tsc
+/out
+
+# IntelliJ IDEA Files #
+*.iml
+*.ipr
+*.iws
+*.idea
+
+*.vscode
+
+# Spring Bootstrap artifacts
+
+dependency-reduced-pom.xml
+
+mem*.db
+
+#Deve ser adicionado as pasta de build dos modulos
+
+# Eclipse Project Files
+.classpath
+.project
+.settings/
+.metadata/
+
+

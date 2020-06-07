@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light boxShadowHeaderTable" >
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand">{{brand}}</a>
+    </div>
+    <ul class="navbar-nav  mr-auto" *ngIf="showButton">
+      <li class="active">
+        <button class="btn btn-default" (click)="newRegisterChanged()">{{buttonTitle}}</button>
+      </li>
+    </ul>
+    <form [formGroup]="searchForm" class="form-inline my-2 my-lg-0" role="search">
+      <div class="input-group">
+        <input [placeholder]="placeholder" formControlName="search" class="form-control py-2 border-right-0 border"
+               type="search" value="search" id="search">
+        <span class="input-group-append">
+          <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+        </span>
+      </div>
+    </form>
+  </div>
+</nav>

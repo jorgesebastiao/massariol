@@ -1,0 +1,49 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Build Files #
+
+bin
+target
+build/
+.gradle
+
+# compiled output
+/dist
+/dist-server
+/tmp
+/out-tsc
+out/
+*.class
+*.jar
+*.war
+
+
+# IntelliJ IDEA Files #
+
+*.iml
+*.ipr
+*.iws
+*.idea
+
+# Spring Bootstrap artifacts
+
+dependency-reduced-pom.xml
+
+mem*.db
+
+README.html
+
+# massariol-ws build
+/massariol-application/build/
+/massariol-application/out/
+/massariol-distribution/build/
+/massariol-distribution/out/
+/massariol-domain/build/
+/massariol-domain/out/
+/massariol-infrastructure/build/
+/massariol-infrastructure/out/
+
+/.project
+
+.metadata
+.settings

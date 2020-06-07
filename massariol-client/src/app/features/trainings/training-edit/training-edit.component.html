@@ -1,0 +1,164 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+  
+<div class="modal-body">
+    <form [formGroup]="trainingForm" novalidate>
+        <div class="form-group row">
+            <div class="col-sm-4 col-md-4">
+                <app-input-container label="Data de inicio">
+                    <input type="text"
+                            placeholder="Data de inicio"
+                            class="form-control"
+                            formControlName="startDate"
+                            #dp="bsDatepicker"
+                            bsDatepicker
+                            [bsConfig]="bsConfig">
+                </app-input-container>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <app-input-container label="Realizado em">
+                    <input type="text"
+                            placeholder="Realizado em"
+                            class="form-control"
+                            formControlName="realizationDate"
+                            #dp="bsDatepicker"
+                            bsDatepicker
+                            [bsConfig]="bsConfig">
+                </app-input-container>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <app-input-container label="Data de fim">
+                    <input type="text"
+                            placeholder="Data de fim"
+                            class="form-control"
+                            formControlName="finishDate"
+                            #dp="bsDatepicker"
+                            bsDatepicker
+                            [bsConfig]="bsConfig">
+                </app-input-container>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12 col-md-12">
+                <app-input-container label="Aluno">
+                    <ng-select 
+                        #select
+                        [items]="students | async"
+                        [loading]="studentLoading" 
+                        bindLabel="name"
+                        bindValue="id"                        
+                        [hideSelected]="true"
+                        placeholder="Selecionar aluno"
+                        loadingText = "Carregando"
+                        notFoundText = "Não há dados para exibição"
+                        typeToSearchText = "Pesquisar aluno por nome/CPF"
+                        [typeahead]="studentInput"
+                        formControlName="studentId">
+                        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                            <div><span>Nome: </span><span [ngOptionHighlight]="search">{{item.name}}</span></div>
+                            <small><b>CPF:</b> {{item.cpf}} </small>
+                        </ng-template>
+                    </ng-select >
+                </app-input-container>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <app-input-container label="Empresa">
+                    <ng-select 
+                        #select
+                        [items]="companies | async"
+                        [loading]="companyLoading" 
+                        bindLabel="corporateName"
+                        bindValue="id"                        
+                        [hideSelected]="true"
+                        placeholder="Selecionar empresa"
+                        loadingText = "Carregando"
+                        notFoundText = "Não há dados para exibição"
+                        typeToSearchText = "Pesquisar empresa por razão social/CNPJ"
+                        [typeahead]="companyInput"
+                        formControlName="companyId">
+                        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                            <div><span>Razão Social: </span><span [ngOptionHighlight]="search">{{item.corporateName}}</span></div>
+                            <small><b>CNPJ:</b> {{item.cnpj}} </small>
+                        </ng-template>
+                    </ng-select >
+                </app-input-container>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <app-input-container label="Curso">
+                    <ng-select 
+                        #select
+                        [items]="courses | async"
+                        [loading]="courseLoading" 
+                        bindLabel="name"
+                        bindValue="id"                        
+                        [hideSelected]="true"
+                        placeholder="Selecionar curso"
+                        loadingText = "Carregando"
+                        notFoundText = "Não há dados para exibição"
+                        typeToSearchText = "Pesquisar curso por nome/identificação"
+                        [typeahead]="courseInput"
+                        formControlName="courseId">
+                        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                            <div><span>Nome: </span><span [ngOptionHighlight]="search">{{item.name}}</span></div>
+                            <small><b>Identificação:</b> {{item.courseIdentification}} </small>
+                        </ng-template>
+                    </ng-select >
+                </app-input-container>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <app-input-container label="Instrutor">
+                    <ng-select 
+                        #select
+                        [items]="instructors | async"
+                        [loading]="instructorLoading" 
+                        bindLabel="name"
+                        bindValue="id"                        
+                        [hideSelected]="true"
+                        placeholder="Selecionar instrutor"
+                        loadingText = "Carregando"
+                        notFoundText = "Não há dados para exibição"
+                        typeToSearchText = "Pesquisar instrutor por nome/CPF"
+                        [typeahead]="instructorInput"
+                        formControlName="instructorId">
+                        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                            <div><span>Nome: </span><span [ngOptionHighlight]="search">{{item.name}}</span></div>
+                            <small><b>CPF:</b> {{item.cpf}} </small>
+                        </ng-template>
+                    </ng-select >
+                </app-input-container>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <app-input-container label="Supervisor">
+                    <ng-select 
+                        #select
+                        [items]="supervisors | async"
+                        [loading]="supervisorLoading" 
+                        bindLabel="name"
+                        bindValue="id"                        
+                        [hideSelected]="true"
+                        placeholder="Selecionar instrutor"
+                        loadingText = "Carregando"
+                        notFoundText = "Não há dados para exibição"
+                        typeToSearchText = "Pesquisar supervisor por nome/CPF"
+                        [typeahead]="supervisorInput"
+                        formControlName="supervisorId">
+                        <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                            <div><span>Nome: </span><span [ngOptionHighlight]="search">{{item.name}}</span></div>
+                            <small><b>CPF:</b> {{item.cpf}} </small>
+                        </ng-template>
+                    </ng-select >
+                </app-input-container>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Fechar</button>
+    <button type="button" class="btn btn-success" [disabled]="!trainingForm.valid" (click)="save()">Salvar</button>
+</div>
+<ngx-loading [show]="isLoading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>

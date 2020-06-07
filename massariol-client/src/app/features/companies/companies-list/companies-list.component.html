@@ -1,0 +1,86 @@
+<app-massariol-registration-and-research
+  brand="Empresas"
+  placeholder="Pesquisar por nome"
+  buttonTitle="Nova empresa"
+  (newRegisterChange)="newCompany($event)"
+  (searchChange)="searchCompany($event)">
+</app-massariol-registration-and-research>
+
+<ngx-datatable
+  class="material fullscreen"
+  [columnMode]="'force'"
+  [rowHeight]="'auto'"
+  [headerHeight]="40"
+  [footerHeight]="30"
+  [scrollbarV]="false"
+  [scrollbarH]="true"
+  [rows]="rows"
+  [messages]="messages"
+  [columns]="columns"
+  [externalPaging]="true"
+  [loadingIndicator]="isLoading"
+  [count]="page.totalElements"
+  [offset]="page.pageNumber"
+  [limit]="page.size"
+  (page)='setPage($event)'>
+  <ngx-datatable-column name="cnpj">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      CNPJ
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.cnpj | cnpj}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="corporateName">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Razão Social
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.corporateName}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="tradeName">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Nome Fantasia
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.tradeName}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column [minWidth]="200" name="Ações" prop="id" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" >
+    <ng-template let-row="row" let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+      <div class="btn-group" role="group">
+        <button
+          (click)="updateCompany(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button *ngIf="!hasUser(row.id)"
+          (click)="createUserCompany(row.id)" 
+          class="btn btn-sm">
+          <i class="fas fa-user-plus"></i>
+        </button>
+        <button *ngIf="hasUser(row.id)"
+          (click)="updateUserCompany(row.id)" 
+          class="btn btn-sm">
+          <i class="fas fa-user-edit"></i>
+        </button>
+        <button *ngIf="showEnable(row.id)"
+          (click)="deleteCompany(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-toggle-on"></i>
+        </button>
+        <button *ngIf="showDisable(row.id)"
+          (click)="deleteCompany(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-toggle-off"></i>
+        </button>
+        <button
+          (click)="deleteCompany(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

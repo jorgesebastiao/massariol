@@ -1,0 +1,14 @@
+package br.com.massariol.application.companies.commands;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+public class CompanyCreateCommand {
+    private String cnpj;
+    private String corporateName;
+    private String tradeName;
+    private String cellPhone;
+    private String email;
+}

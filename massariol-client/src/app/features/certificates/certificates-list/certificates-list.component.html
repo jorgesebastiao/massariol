@@ -1,0 +1,56 @@
+<app-massariol-registration-and-research
+  brand="Colaborador"
+  placeholder="Pesquisar por nome/cpf"
+  (searchChange)="searchStudents($event)">
+</app-massariol-registration-and-research>
+
+<ngx-datatable
+  class="material fullscreen"
+  [columnMode]="'force'"
+  [rowHeight]="'auto'"
+  [headerHeight]="40"
+  [footerHeight]="30"
+  [scrollbarV]="false"
+  [scrollbarH]="true"
+  [rows]="rows"
+  [messages]="messages"
+  [columns]="columns"
+  [externalPaging]="true"
+  [loadingIndicator]="isLoading"
+  [count]="page.totalElements"
+  [offset]="page.pageNumber"
+  [limit]="page.size"
+  (page)='setPage($event)'>
+  <ngx-datatable-column name="Nome">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Nome
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.studentName}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Cpf">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Cpf
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.studentCpf | cpf}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="studentOffice">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Função
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.studentOffice}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Certificados" prop="id" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" >
+    <ng-template let-row="row" let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+      <div class="btn-group" role="group">
+        <button (click)="openCertificatesForStudent(row.id, row.studentName)" class="btn btn-sm">
+          <i class="fas fa-list"></i></button>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

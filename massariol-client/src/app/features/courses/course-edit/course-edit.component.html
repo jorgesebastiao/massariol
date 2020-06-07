@@ -1,0 +1,78 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form [formGroup]="courseForm" novalidate>
+        <div class="form-group">
+            <app-input-container label="Nome">
+            <input
+                    type="text"
+                    class="form-control"
+                    formControlName="name"
+                    id="name"
+                    placeholder="Nome do curso">
+            </app-input-container>
+        </div>
+        <div class="form-group">
+            <app-input-container label="Identificação">
+            <input
+                    type="text"
+                    class="form-control"
+                    formControlName="courseIdentification"
+                    id="courseIdentification"
+                    placeholder="Identificação do curso">
+            </app-input-container>
+        </div>
+        <div class="form-group">
+            <app-input-container errorMessageParttern="Número invalido" label="Carga horária">
+            <input
+                    type="number"
+                    class="form-control"
+                    formControlName="workload"
+                    id="workload"
+                    placeholder="Carga horária">
+            </app-input-container>
+        </div>
+        <div class="form-group">
+            <app-input-container errorMessageParttern="Número invalido" label="Validade em anos">
+            <input
+                    type="number"
+                    class="form-control"
+                    formControlName="validityInYears"
+                    id="validityInYears"
+                    placeholder="Validade em anos">
+            </app-input-container>
+        </div>
+    </form>
+    <div>
+        <md-editor name="Content"
+        id="editor"
+        [(ngModel)]="textEditor"
+        (ngModelChange)="updatePreview()"
+        [height]="'400px'"
+        [options]="optionsEditor"
+        required
+        maxlength="500">
+        </md-editor>
+    </div>
+    <div>
+        <md-editor name="preview"
+        [(ngModel)]="textPreview"
+        [height]="'400px'"
+        [mode]="modePreview"
+        [options]="optionsPreview"
+        required
+        maxlength="500">
+        </md-editor>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Fechar</button>
+    <button type="button" class="btn btn-success" [disabled]="!courseForm.valid" (click)="save()">Salvar</button>
+</div>
+<ngx-loading [show]="isLoading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>

@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~ngx-toastr/toastr';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import '~@swimlane/ngx-datatable/release/themes/bootstrap.css';
+
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.error-msg{
+  color:  #ff0000 !important;
+}
+
+.massariol_color{
+  background: #f26520;
+
+}
+
+datatable-scroller { width: 100% !important; }

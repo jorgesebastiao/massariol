@@ -1,0 +1,74 @@
+buildscript {
+    ext {
+        dependencyManagementPluginVersion = '1.0.8.RELEASE'
+        springBootVersion = '2.1.6.RELEASE'
+        lombokVersion = '1.18.6'
+    }
+    repositories {
+        maven{ url 'http://jaspersoft.artifactoryonline.com/jaspersoft/jr-ce-releases' }
+        maven{ url 'http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts' }
+      //  maven{ url 'http://jasperreports.sourceforge.net/maven2/com/lowagie/itext/2.1.7.js4' }
+        maven{ url 'https://repository.jboss.org/nexus/content/groups/public' }
+        maven{ url 'https://plugins.gradle.org/m2/' }
+        mavenCentral()
+        jcenter()
+        mavenLocal()
+    }
+    dependencies {
+        classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.flywaydb:flyway-gradle-plugin:6.0.8"
+    }
+}
+
+allprojects {
+    group = 'br.com.massariol'
+    repositories {
+        maven{ url 'http://jaspersoft.artifactoryonline.com/jaspersoft/jr-ce-releases'}
+        maven{ url 'http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts' }
+      //  maven{ url 'http://jasperreports.sourceforge.net/maven2/com/lowagie/itext/2.1.7.js4' }
+        maven{ url 'https://repository.jboss.org/nexus/content/groups/public' }
+        maven{ url 'https://plugins.gradle.org/m2/' }
+        mavenCentral()
+        jcenter()
+        mavenLocal()
+    }
+    apply plugin: 'idea'
+    apply plugin:'java'
+}
+
+subprojects {
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    buildscript {
+        repositories {
+            maven{ url 'http://jaspersoft.artifactoryonline.com/jaspersoft/jr-ce-releases'}
+            maven{ url 'http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts' }
+          //  maven{ url 'http://jasperreports.sourceforge.net/maven2/com/lowagie/itext/2.1.7.js4' }
+            maven{ url 'https://repository.jboss.org/nexus/content/groups/public' }
+            maven{ url 'https://plugins.gradle.org/m2/' }
+            mavenCentral()
+            jcenter()
+            mavenLocal()
+        }
+        dependencies {
+            classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}")
+        }
+    }
+
+    apply plugin: 'io.spring.dependency-management'
+    dependencies{
+        compileOnly("org.projectlombok:lombok:${lombokVersion}")
+        testCompileOnly("org.projectlombok:lombok:${lombokVersion}")
+        annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+        testAnnotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+        }
+    }
+}

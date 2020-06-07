@@ -1,0 +1,16 @@
+<div class="form-group" [class.has-success]="hasSuccess()" [class.has-error]="hasError()">
+  <label [for]="for" class="control-label">{{label}}</label>
+
+  <ng-content></ng-content>
+
+  <span class="error-msg" *ngIf="hasRequerid()"><i class="fa fa-times"></i> Campo obrigatório</span>
+  <span class="error-msg" *ngIf="hasInvalidCpf()"><i class="fa fa-times"></i> Cpf inválido</span>
+  <div class="error-msg" *ngIf="hasCpfInUse()"><i class="fa fa-times"></i>  Cpf já esta em uso</div>
+  <span class="error-msg" *ngIf="hasInvalidCnpj()"><i class="fa fa-times"></i> Cnpj inválido</span>
+  <div class="error-msg" *ngIf="hasCnpjInUse()"><i class="fa fa-times"></i>  Cnpj já está em uso</div>
+  <span class="error-msg" *ngIf="hasInvalidEmail()"><i class="fa fa-times"></i> E-mail inválido</span>
+  <div class="error-msg" *ngIf="hasUserInUse()"><i class="fa fa-times"></i>  Usuário já está em uso</div>
+  <span class="error-msg" *ngIf="hasParttern()"><i class="fa fa-times"></i> {{errorMessageParttern}}</span>
+  <span class="error-msg" *ngIf="hasMaxLength()"><i class="fa fa-times"></i> {{errorMessageMaxLenght}}</span>
+  <span class="error-msg" *ngIf="hasMinLenght()"><i class="fa fa-times"></i> {{errorMessageMinLenght}}</span>
+</div>

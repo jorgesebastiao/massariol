@@ -1,0 +1,40 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+apply plugin: 'distribution'
+apply plugin: 'org.flywaydb.flyway'
+
+executableDir = 'bin'
+mainClassName='br.com.massariol.distribution.DistributionApplication'
+
+jar {
+    archiveBaseName = 'massariol-module-distribution'
+}
+
+bootRun {
+    sourceResources sourceSets.main
+}
+
+ext {
+    springfoxVersion = '2.9.2'
+}
+
+dependencies {
+    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
+    compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'
+    compileOnly('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-json')
+   // compile('org.springframework.boot:spring-boot-starter-log4j2')
+    compile group: 'org.modelmapper.extensions', name: 'modelmapper-spring', version: '2.3.2'
+    compile group: 'io.springfox', name: 'springfox-data-rest', version: "${springfoxVersion}"
+    compile group: 'io.springfox', name: 'springfox-core', version: "${springfoxVersion}"
+    compile group: 'io.springfox', name: 'springfox-spring-web', version: "${springfoxVersion}"
+    compile group: "io.springfox", name: 'springfox-swagger2', version: "${springfoxVersion}"
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: "${springfoxVersion}"
+    compile group: 'io.springfox', name: 'springfox-bean-validators', version: "${springfoxVersion}"
+    compile project(':massariol-application')
+    compile project(':massariol-security')
+    annotationProcessor ('org.springframework.boot:spring-boot-configuration-processor')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}

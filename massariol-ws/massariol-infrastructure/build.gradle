@@ -1,0 +1,11 @@
+jar {
+    archiveBaseName = 'massariol-module-infrastructure'
+    archiveVersion = '1.0.0-SNAPSHOT'
+}
+
+dependencies {
+    compile project(':massariol-domain')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+    compile group: 'org.flywaydb', name: 'flyway-core', version: '6.0.8'
+}

@@ -1,0 +1,72 @@
+<div class="containerImage">
+  <img class="imgStyle" src="../../../assets/Logo.png" alt="">
+</div>
+<div class="shadowBoxNavbar header">
+  <nav class="navbar navbar-expand-lg navbar-dark massariol_color" >
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav">
+        <li *ngIf="authService.haveAnyPermission(['ROLE_ADMIN_MASSARIOL'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['students']" [routerLinkActive]="['active']">
+            <i class="fas fa-users" aria-hidden="true"></i>
+            <span class="white-text"> Alunos</span>
+          </a>
+        </li>
+        <li *ngIf="authService.haveAnyPermission(['ROLE_ADMIN_MASSARIOL'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['signatures']" [routerLinkActive]="['active']">
+            <i class="fas fa-signature" aria-hidden="true"></i>
+            <span class="white-text"> Assinaturas</span>
+          </a>
+        </li>
+        <li *ngIf="authService.haveAnyPermission(['ROLE_COMPANY_CERTIFICATE'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['certificates']" [routerLinkActive]="['active']">
+            <i class="fas fa-certificate" aria-hidden="true"></i>
+            <span class="white-text"> Certificados</span>
+          </a>
+        </li>
+        <li *ngIf="authService.haveAnyPermission(['ROLE_ADMIN_MASSARIOL'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['courses']" [routerLinkActive]="['active']">
+            <i class="fas fa-award" aria-hidden="true"></i>
+            <span class="white-text"> Cursos</span>
+          </a>
+        </li>
+        <li *ngIf="authService.haveAnyPermission(['ROLE_ADMIN_MASSARIOL'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['companies']" [routerLinkActive]="['active']">
+            <i class="fas fa-university" aria-hidden="true"></i>
+            <span class="white-text"> Empresas</span>
+          </a>
+        </li>
+        <li *ngIf="authService.haveAnyPermission(['ROLE_ADMIN_MASSARIOL'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['instructors']" [routerLinkActive]="['active']">
+            <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+            <span class="white-text"> Instrutores</span>
+          </a>
+        </li>
+        <li *ngIf="authService.haveAnyPermission(['ROLE_ADMIN_MASSARIOL'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['supervisors']" [routerLinkActive]="['active']">
+            <i class="fas fa-user-secret" aria-hidden="true"></i>
+            <span class="white-text"> Supervisores</span>
+          </a>
+        </li>
+        <li *ngIf="authService.haveAnyPermission(['ROLE_ADMIN_MASSARIOL'])" class="nav-item">
+          <a class="nav-link" [routerLink]="['trainings']" [routerLinkActive]="['active']">
+            <i class="fas fa-chalkboard" aria-hidden="true"></i>
+            <span class="white-text"> Treinamentos</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" style="color: white" (click)="logout()" href="javascript:;">
+            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+            <span class="white-text"> Sair</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

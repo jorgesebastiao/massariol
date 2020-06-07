@@ -1,0 +1,74 @@
+<app-massariol-registration-and-research
+  buttonTitle="Novo aluno"
+  brand="Alunos"
+  placeholder="Pesquisar por nome/cpf"
+  (newRegisterChange)="newStudent($event)"
+  (searchChange)="searchStudent($event)">
+</app-massariol-registration-and-research>
+
+<ngx-datatable
+  class="material fullscreen"
+  [columnMode]="'force'"
+  [rowHeight]="'auto'"
+  [headerHeight]="40"
+  [footerHeight]="30"
+  [scrollbarV]="false"
+  [scrollbarH]="true"
+  [rows]="rows"
+  [messages]="messages"
+  [columns]="columns"
+  [externalPaging]="true"
+  [loadingIndicator]="isLoading"
+  [count]="page.totalElements"
+  [offset]="page.pageNumber"
+  [limit]="page.size"
+  (page)='setPage($event)'>
+  <ngx-datatable-column name="name">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Nome
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.name}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="cpf">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Cpf
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.cpf | cpf}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="cellPhone">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Celular
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.cellPhone | cellPhone}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="email">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      E-mail
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.email}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Ações" prop="id" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" >
+    <ng-template let-row="row" let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+      <div class="btn-group" role="group">
+        <button
+          (click)="updateStudent(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          (click)="deleteStudent(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

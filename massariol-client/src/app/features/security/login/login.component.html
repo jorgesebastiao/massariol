@@ -1,0 +1,48 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <div class="card rounded-0">
+            <div class="card-header massariol_color">
+              <h3 class="mb-0 massariol_title">Massariol Treinamentos</h3>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="loginForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate>
+                <div class="form-group">
+                  <label>Email</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                    </div>
+                    <input placeholder="Seu email" type="text" formControlName="user"
+                           class="form-control form-control-lg rounded-0" name="user" id="user">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Senha</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                    </div>
+                    <input placeholder="Sua senha" formControlName="password" type="password"
+                           class="form-control form-control-lg rounded-0" id="password" autocomplete="new-password">
+                  </div>
+                </div>
+
+                <span style="color: red; font-weight: bold" >{{invalidGrant}}</span>
+
+                <button (click)="login()" [disabled]="!loginForm.valid" type="submit"
+                        class="btn btn-success btn-lg float-right" id="btnLogin">Entrar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-loading [show]="isLoading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+

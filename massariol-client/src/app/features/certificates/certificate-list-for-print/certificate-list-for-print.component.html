@@ -1,0 +1,73 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <ngx-datatable
+    class="material fullscreen"
+    [columnMode]="'force'"
+    [rowHeight]="'auto'"
+    [headerHeight]="40"
+    [footerHeight]="30"
+    [scrollbarV]="false"
+    [scrollbarH]="true"
+    [rows]="rows"
+    [messages]="messages"
+    [columns]="columns"
+    [externalPaging]="true"
+    [loadingIndicator]="isLoading"
+    [count]="page.totalElements"
+    [offset]="page.pageNumber"
+    [limit]="page.size"
+    (page)='setPage($event)'>
+    <ngx-datatable-column name="startDate">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Data inicio
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.startDate | date: 'dd/MM/yyyy'}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="finishDate">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Data fim
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.finishDate | date: 'dd/MM/yyyy'}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="expirationDate">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Data validade
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.expirationDate | date: 'dd/MM/yyyy'}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="courseName">
+      <ng-template let-column="column" ngx-datatable-header-template>
+        Curso
+      </ng-template>
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.courseName}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Certificados" prop="id" [sortable]="false"  [canAutoResize]="false" [draggable]="false" [resizeable]="false" >
+      <ng-template let-row="row" let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+        <div class="btn-group" role="group">
+          <button (click)="printCertificate(row.id, row.businessStudentId)" class="btn btn-sm">
+            <i class="fas fa-print"></i></button>
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Fechar</button>
+</div>
+
+<ngx-loading [show]="isLoading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>

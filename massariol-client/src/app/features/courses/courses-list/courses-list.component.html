@@ -1,0 +1,66 @@
+<app-massariol-registration-and-research
+  brand="Cursos"
+  placeholder="Pesquisar por nome"
+  buttonTitle="Novo curso"
+  (newRegisterChange)="newCourse($event)"
+  (searchChange)="searchCourse($event)">
+</app-massariol-registration-and-research>
+
+<ngx-datatable
+  class="material fullscreen"
+  [columnMode]="'force'"
+  [rowHeight]="'auto'"
+  [headerHeight]="40"
+  [footerHeight]="30"
+  [scrollbarV]="false"
+  [scrollbarH]="true"
+  [rows]="rows"
+  [messages]="messages"
+  [columns]="columns"
+  [externalPaging]="true"
+  [loadingIndicator]="isLoading"
+  [count]="page.totalElements"
+  [offset]="page.pageNumber"
+  [limit]="page.size"
+  (page)='setPage($event)'>
+  <ngx-datatable-column name="name">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Nome
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.name}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="workload">
+    <ng-template let-column="column" ngx-datatable-header-template>
+        Carga Horária
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.workload}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="validityInYears">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Validade em Anos
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.validityInYears}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column [minWidth]="200" name="Ações" prop="id" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" >
+    <ng-template let-row="row" let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+      <div class="btn-group" role="group">
+        <button
+          (click)="updateCourse(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          (click)="deleteCourse(row.id)"
+          class="btn btn-sm">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>
