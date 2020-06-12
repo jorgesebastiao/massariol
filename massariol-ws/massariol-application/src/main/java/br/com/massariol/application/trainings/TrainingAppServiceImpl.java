@@ -79,7 +79,30 @@ public class TrainingAppServiceImpl implements TrainingAppService {
         return training.getId();
     }
 
+    @Transactional
     public void update(TrainingUpdateCommand trainingUpdateCommand) {
+        var trainingDatabase = trainingRepository.findById(trainingUpdateCommand.getId())
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
+        modelMapper.map(trainingUpdateCommand,trainingDatabase);
+
+        var company = companyAppService.getById(trainingUpdateCommand.getCompanyId());
+        var student = studentAppService.getById(trainingUpdateCommand.getStudentId());
+
+        var businessStudent = businessstudentAppService.manager(student, company);
+        trainingDatabase.setBusinessStudent(businessStudent);
+
+        var course = courseAppService.getById(trainingUpdateCommand.getCourseId());
+        trainingDatabase.setCourse(course);
+
+        var instructor = instructorAppService.getById(trainingUpdateCommand.getInstructorId());
+        trainingDatabase.setInstructor(instructor);
+
+        var supervisor = supervisorAppService.getById(trainingUpdateCommand.getSupervisorId());
+        trainingDatabase.setSupervisor(supervisor);
+
+        trainingDatabase.setExpirationDate(LocalDate.now().plusYears(course.getValidityInYears()));
+
+        trainingRepository.save(trainingDatabase);
     }
 }

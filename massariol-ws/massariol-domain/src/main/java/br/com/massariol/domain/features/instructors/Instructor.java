@@ -23,4 +23,5 @@ public class Instructor extends EntityBaseImpl<Long> {
     private String signaturePicture;
     @OneToMany(mappedBy = "instructor")
     private List<Training> trainings;
+
 }
