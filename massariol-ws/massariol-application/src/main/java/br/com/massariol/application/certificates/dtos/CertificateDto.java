@@ -26,15 +26,25 @@ public class CertificateDto {
     private String studentSignature;
     private int workload;
     private static Map<String, Object> parameters;
+    private static Map<String, Object> backParameters;
 
     public static Map<String, Object> getParameters(String imagePath) {
 
         if (parameters == null) {
             parameters = new HashMap<>();
             parameters.put("frontCertificate", imagePath);
-            parameters.put("backCertificate", imagePath);
         }
 
         return parameters;
+    }
+
+    public static Map<String, Object> getLogo(String path) {
+
+        if (backParameters == null) {
+            backParameters = new HashMap<>();
+            backParameters.put("logo", path);
+        }
+
+        return backParameters;
     }
 }
