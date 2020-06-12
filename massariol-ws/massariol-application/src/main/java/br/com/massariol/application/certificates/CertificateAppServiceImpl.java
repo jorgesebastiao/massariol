@@ -35,6 +35,10 @@ public class CertificateAppServiceImpl implements CertificateAppService {
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(getUrlReport(), CertificateDto.getParameters(getImagePath()),
                 new JRBeanCollectionDataSource(certificateDtoList, false));
+
+        jasperPrint.addPage(JasperFillManager.fillReport(getUrlBackOfCertificate(), CertificateDto.getLogo(getLogoPath()),
+                new JRBeanCollectionDataSource(certificateDtoList, false)).getPages().get(0));
+
         return JasperExportManager.exportReportToPdf(jasperPrint);
     }
 
@@ -42,8 +46,16 @@ public class CertificateAppServiceImpl implements CertificateAppService {
         return this.getClass().getResource("/images/front_certificate.png").toString();
     }
 
+    private String getLogoPath() {
+        return this.getClass().getResource("/images/logo.png").toString();
+    }
+
     private InputStream getUrlReport() throws Exception {
         return this.getClass().getResource("/reports/certificado.jasper").openStream();
+    }
+
+    private InputStream getUrlBackOfCertificate() throws Exception {
+        return this.getClass().getResource("/reports/certificado_verso.jasper").openStream();
     }
 
 }
