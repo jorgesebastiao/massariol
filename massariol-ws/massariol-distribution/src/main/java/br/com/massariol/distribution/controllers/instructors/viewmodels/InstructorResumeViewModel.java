@@ -11,5 +11,4 @@ public class InstructorResumeViewModel {
     private String name;
     private String cellPhone;
     private String email;
-    private String signaturePicture;
 }

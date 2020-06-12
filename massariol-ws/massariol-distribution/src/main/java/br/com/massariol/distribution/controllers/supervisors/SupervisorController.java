@@ -1,7 +1,9 @@
 package br.com.massariol.distribution.controllers.supervisors;
 
+import br.com.massariol.application.students.commands.StudentSignatureCommand;
 import br.com.massariol.application.supervisors.SupervisorAppService;
 import br.com.massariol.application.supervisors.commands.SupervisorCreateCommand;
+import br.com.massariol.application.supervisors.commands.SupervisorSignatureCommand;
 import br.com.massariol.application.supervisors.commands.SupervisorUpdateCommand;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
 import br.com.massariol.distribution.controllers.supervisors.viewmodels.SupervisorDetailViewModel;
@@ -60,5 +62,4 @@ public class SupervisorController extends ApiBaseController {
         supervisorAppService.update(supervisorUpdateCommand);
         return status(HttpStatus.CREATED).build();
     }
-
 }

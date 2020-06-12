@@ -1,6 +1,7 @@
 package br.com.massariol.application.students;
 
 import br.com.massariol.application.students.commands.StudentCreateCommand;
+import br.com.massariol.application.students.commands.StudentSignatureCommand;
 import br.com.massariol.application.students.commands.StudentUpdateCommand;
 import br.com.massariol.domain.features.exceptions.ExceptionCnpjInUse;
 import br.com.massariol.domain.features.exceptions.ExceptionCpfInUse;
@@ -32,6 +33,11 @@ public class StudentAppServiceImpl implements StudentAppService {
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
 
+    public Student findByCpf(String cpf) {
+        return studentRepository.findByCpf(cpf)
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
+    }
+
     public Long add(StudentCreateCommand studentCreateCommand) {
         var student = modelMapper.map(studentCreateCommand, Student.class);
 
@@ -51,9 +57,11 @@ public class StudentAppServiceImpl implements StudentAppService {
         studentRepository.save(studentDatabase);
     }
 
-/*
-    @Override
-    public Page<StudentDto> findAllLegacy(Pageable pageable, int legacyId, String filter) {
-        return studentRepositorylegacy.findAll(pageable, filter, legacyId);
-    }*/
+    public void signature(Long studentId, String signature) {
+        var studentDatabase = studentRepository.findById(studentId)
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
+
+        studentDatabase.setSignaturePicture(signature);
+        studentRepository.save(studentDatabase);
+    }
 }
