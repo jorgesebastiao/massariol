@@ -2,6 +2,7 @@ package br.com.massariol.distribution.controllers.instructors;
 
 import br.com.massariol.application.instructors.InstructorAppService;
 import br.com.massariol.application.instructors.commands.InstructorCreateCommand;
+import br.com.massariol.application.instructors.commands.InstructorSignatureCommand;
 import br.com.massariol.application.instructors.commands.InstructorUpdateCommand;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
 import br.com.massariol.distribution.controllers.instructors.viewmodels.InstructorDetailViewModel;

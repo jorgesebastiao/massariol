@@ -1,6 +1,7 @@
 package br.com.massariol.application.supervisors;
 
 import br.com.massariol.application.supervisors.commands.SupervisorCreateCommand;
+import br.com.massariol.application.supervisors.commands.SupervisorSignatureCommand;
 import br.com.massariol.application.supervisors.commands.SupervisorUpdateCommand;
 import br.com.massariol.domain.features.exceptions.ExceptionCpfInUse;
 import br.com.massariol.domain.features.supervisors.Supervisor;
@@ -26,7 +27,12 @@ public class SupervisorAppServiceImpl implements SupervisorAppService {
     }
 
     public Supervisor getById(Long id) {
-        return this.supervisorRepository.findById(id)
+        return supervisorRepository.findById(id)
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
+    }
+
+    public Supervisor findByCpf(String cpf) {
+        return supervisorRepository.findByCpf(cpf)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
 
@@ -46,6 +52,14 @@ public class SupervisorAppServiceImpl implements SupervisorAppService {
 
         modelMapper.map(supervisorUpdateCommand,supervisorDatabase);
 
+        supervisorRepository.save(supervisorDatabase);
+    }
+
+    public void signature(Long supervisorId, String signature){
+        var supervisorDatabase = supervisorRepository.findById(supervisorId)
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
+
+        supervisorDatabase.setSignaturePicture(signature);
         supervisorRepository.save(supervisorDatabase);
     }
 }

@@ -1,7 +1,9 @@
 package br.com.massariol.application.supervisors;
 
 import br.com.massariol.application.supervisors.commands.SupervisorCreateCommand;
+import br.com.massariol.application.supervisors.commands.SupervisorSignatureCommand;
 import br.com.massariol.application.supervisors.commands.SupervisorUpdateCommand;
+import br.com.massariol.domain.features.students.Student;
 import br.com.massariol.domain.features.supervisors.Supervisor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,7 +13,11 @@ public interface SupervisorAppService {
 
     Supervisor getById(Long id);
 
+    Supervisor findByCpf(String cpf);
+
     Long add(SupervisorCreateCommand supervisorCreateCommand);
 
     void update(SupervisorUpdateCommand supervisorUpdateCommand);
+
+    void signature(Long supervisorId, String signature);
 }

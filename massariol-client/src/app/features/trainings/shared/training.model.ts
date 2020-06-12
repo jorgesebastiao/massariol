@@ -7,6 +7,7 @@ export class Training {
     public expirationDate?: string,
     public realizationDate?: string,
     public studentId?: number,
+    public courseId?: number,
     public companyId?: number,
     public instructorId?: number,
     public supervisorId?: number) {
@@ -18,6 +19,7 @@ export class TrainingCreateCommand {
   public finishDate: string;
   public realizationDate: string;
   public studentId: number;
+  public courseId: number;
   public companyId: number;
   public instructorId: number;
   public supervisorId: number;
@@ -27,6 +29,7 @@ export class TrainingCreateCommand {
     this.finishDate = training.finishDate;
     this.realizationDate = training.realizationDate;
     this.studentId = training.studentId;
+    this.courseId = training.courseId;
     this.companyId = training.companyId;
     this.instructorId = training.instructorId;
     this.supervisorId = training.supervisorId;
@@ -40,6 +43,7 @@ export class TrainingUpdateCommand {
   public realizationDate: string;
   public studentId: number;
   public companyId: number;
+  public courseId: number;
   public instructorId: number;
   public supervisorId: number;
 
@@ -49,6 +53,7 @@ export class TrainingUpdateCommand {
     this.finishDate = training.finishDate;
     this.realizationDate = training.realizationDate;
     this.studentId = training.studentId;
+    this.courseId = training.courseId;
     this.companyId = training.companyId;
     this.instructorId = training.instructorId;
     this.supervisorId = training.supervisorId;

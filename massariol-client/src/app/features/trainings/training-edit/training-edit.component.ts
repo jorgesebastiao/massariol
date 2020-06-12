@@ -81,16 +81,17 @@ export class TrainingEditComponent implements OnInit {
         this.isEdit = false;
         this.title = 'Cadastro de treinamento';
         this.initForms();
-        this.getStudents();
-        this.getCourses();
-        this.getCompanies();
-        this.getInstructors();
-        this.getSupervisors();
 
         if (this.trainingId) {
             this.isEdit = true;
             this.title = 'Edição de treinamento';
             this.getTraining();
+        }else{
+            this.getStudents();
+            this.getCourses();
+            this.getCompanies();
+            this.getInstructors();
+            this.getSupervisors();
         }
     }
 
@@ -185,7 +186,7 @@ export class TrainingEditComponent implements OnInit {
         newInstructors.push(instructor);
         const page: Page = new Page();
         this.instructors = concat(
-            of([]),
+            of(newInstructors),
             this.instructorInput.pipe(
                 distinctUntilChanged(),
                 tap(() => this.instructorLoading = true),
@@ -199,15 +200,57 @@ export class TrainingEditComponent implements OnInit {
     }
 
     setCompany(company: any) {
-
+        var newCompanies: any[] = [];
+        newCompanies.push(company);
+        const page: Page = new Page();
+        this.companies = concat(
+            of(newCompanies),
+            this.companyInput.pipe(
+                distinctUntilChanged(),
+                tap(() => this.companyLoading = true),
+                switchMap(term => this.companyService.getAll(page, term).pipe(
+                    map((data) => data.content),
+                    catchError(() => of([])),
+                    tap(() => this.companyLoading = false)
+                ))
+            )
+        );
     }
 
-    setCourse(company: any) {
-
+    setCourse(course: any) {
+        var newCourses: any[] = [];
+        newCourses.push(course);
+        const page: Page = new Page();
+        this.courses = concat(
+            of(newCourses),
+            this.courseInput.pipe(
+                distinctUntilChanged(),
+                tap(() => this.courseLoading = true),
+                switchMap(term => this.courseService.getAll(page, term).pipe(
+                    map((data) => data.content),
+                    catchError(() => of([])),
+                    tap(() => this.courseLoading = false)
+                ))
+            )
+        );
     }
 
     setSupervisor(supervisor: any) {
-
+        var newSupervisors: any[] = [];
+        newSupervisors.push(supervisor);
+        const page: Page = new Page();
+        this.supervisors = concat(
+            of(newSupervisors),
+            this.supervisorInput.pipe(
+                distinctUntilChanged(),
+                tap(() => this.supervisorLoading = true),
+                switchMap(term => this.supervisorService.getAll(page, term).pipe(
+                    map((data) => data.content),
+                    catchError(() => of([])),
+                    tap(() => this.supervisorLoading = false)
+                ))
+            )
+        );
     }
 
     getStudents() {

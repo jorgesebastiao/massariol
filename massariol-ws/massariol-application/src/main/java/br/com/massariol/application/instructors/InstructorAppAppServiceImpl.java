@@ -1,6 +1,7 @@
 package br.com.massariol.application.instructors;
 
 import br.com.massariol.application.instructors.commands.InstructorCreateCommand;
+import br.com.massariol.application.instructors.commands.InstructorSignatureCommand;
 import br.com.massariol.application.instructors.commands.InstructorUpdateCommand;
 import br.com.massariol.domain.features.exceptions.ExceptionCpfInUse;
 import br.com.massariol.domain.features.instructors.Instructor;
@@ -26,7 +27,12 @@ public class InstructorAppAppServiceImpl implements InstructorAppService {
     }
 
     public Instructor getById(Long id) {
-        return this.instructorRepository.findById(id)
+        return instructorRepository.findById(id)
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
+    }
+
+    public Instructor findByCpf(String cpf) {
+        return instructorRepository.findByCpf(cpf)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
 
@@ -46,6 +52,14 @@ public class InstructorAppAppServiceImpl implements InstructorAppService {
 
         modelMapper.map(instructorUpdateCommand,instructorDatabase);
 
+        instructorRepository.save(instructorDatabase);
+    }
+
+    public void signature(Long instructorId, String signature) {
+        var instructorDatabase = instructorRepository.findById(instructorId)
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
+
+        instructorDatabase.setSignaturePicture(signature);
         instructorRepository.save(instructorDatabase);
     }
 
