@@ -9,12 +9,12 @@
 <form [formGroup]="supervisorForm" novalidate>
     <div class="form-group">
       <app-input-container label="CPF">
-        <input  type="text" 
+        <input  type="text"
                 [readonly]="isEdit"
                 appMaskFormatter="999.999.999-99"
-                class="form-control" 
-                formControlName="cpf" 
-                id="cpf" 
+                class="form-control"
+                formControlName="cpf"
+                id="cpf"
                 placeholder="CPF">
       </app-input-container>
     </div>
@@ -41,7 +41,7 @@
 
 <div class="modal-footer">
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Fechar</button>
-  <button type="button" class="btn btn-success" [disabled]="!supervisorForm.valid" (click)="save()">Salvar</button>
+  <button type="button" class="btn btn-" [disabled]="!supervisorForm.valid" (click)="save()">Salvar</button>
 </div>
 
 <ngx-loading [show]="isLoading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
