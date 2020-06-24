@@ -16,14 +16,14 @@ public class CertificateDto {
     private LocalDate finishDate;
     private String instructorCpf;
     private String instructorName;
-    private String instructorSignature;
+    private byte[] instructorSignature;
     private String supervisorCpf;
     private String supervisorName;
-    private String supervisorSignature;
+    private byte[] supervisorSignature;
     private LocalDate startDate;
     private String studentCpf;
     private String studentName;
-    private String studentSignature;
+    private byte[] studentSignature;
     private int workload;
     private static Map<String, Object> parameters;
     private static Map<String, Object> backParameters;

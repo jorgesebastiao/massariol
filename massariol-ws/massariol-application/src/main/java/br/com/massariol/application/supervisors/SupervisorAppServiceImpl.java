@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
+
 @Service
 public class SupervisorAppServiceImpl implements SupervisorAppService {
     private  final ModelMapper modelMapper;
@@ -59,7 +61,7 @@ public class SupervisorAppServiceImpl implements SupervisorAppService {
         var supervisorDatabase = supervisorRepository.findById(supervisorId)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
-        supervisorDatabase.setSignaturePicture(signature);
+        supervisorDatabase.setSignaturePicture(Base64.getEncoder().encode(signature.getBytes()));
         supervisorRepository.save(supervisorDatabase);
     }
 }
