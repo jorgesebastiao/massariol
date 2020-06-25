@@ -1,1 +1,115 @@
-<signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <h2>Escolha sua assinatura</h2>
+  </div>
+
+  <form [formGroup]="signatureForm" novalidate>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <app-input-container label="Autor da assinatura">
+          <select id="type"
+                  class="form-control"
+                  formControlName="type">
+            <option value="2">Aluno</option>
+            <option value="0">Instrutor</option>
+            <option value="1">Supervisor</option>
+          </select>
+        </app-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <app-input-container *ngIf="signatureForm.get('type').value === '2'" label="Aluno">
+          <ng-select
+            #select
+            [items]="students | async"
+            [loading]="studentLoading"
+            bindLabel="name"
+            bindValue="id"
+            [hideSelected]="true"
+            placeholder="Selecionar aluno"
+            loadingText="Carregando"
+            notFoundText="Não há dados para exibição"
+            typeToSearchText="Pesquisar aluno por nome/CPF"
+            [typeahead]="studentInput"
+            formControlName="entityId">
+            <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+              <div><span>Nome: </span><span [ngOptionHighlight]="search">{{item.name}}</span></div>
+              <small><b>CPF:</b> {{item.cpf}} </small>
+            </ng-template>
+          </ng-select>
+        </app-input-container>
+
+        <app-input-container *ngIf="signatureForm.get('type').value === '0'" label="Instrutor">
+          <ng-select
+            #select
+            [items]="instructors | async"
+            [loading]="instructorLoading"
+            bindLabel="name"
+            bindValue="id"
+            [hideSelected]="true"
+            placeholder="Selecionar instrutor"
+            loadingText="Carregando"
+            notFoundText="Não há dados para exibição"
+            typeToSearchText="Pesquisar instrutor por nome/CPF"
+            [typeahead]="instructorInput"
+            formControlName="entityId">
+            <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+              <div><span>Nome: </span><span [ngOptionHighlight]="search">{{item.name}}</span></div>
+              <small><b>CPF:</b> {{item.cpf}} </small>
+            </ng-template>
+          </ng-select>
+        </app-input-container>
+
+        <app-input-container *ngIf="signatureForm.get('type').value === '1'" label="Supervisor">
+          <ng-select
+            #select
+            [items]="supervisors | async"
+            [loading]="supervisorLoading"
+            bindLabel="name"
+            bindValue="id"
+            [hideSelected]="true"
+            placeholder="Selecionar instrutor"
+            loadingText="Carregando"
+            notFoundText="Não há dados para exibição"
+            typeToSearchText="Pesquisar supervisor por nome/CPF"
+            [typeahead]="supervisorInput"
+            formControlName="entityId">
+            <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+              <div><span>Nome: </span><span [ngOptionHighlight]="search">{{item.name}}</span></div>
+              <small><b>CPF:</b> {{item.cpf}} </small>
+            </ng-template>
+          </ng-select>
+        </app-input-container>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+      <h3>Assinatura</h3>
+
+    </div>
+    <div class="row justify-content-md-center">
+      <signature-pad id="signaturePad" style="border-bottom: 2px solid gray; width: 100%"
+                     [options]="signaturePadOptions"
+                     (window:resize)="resizeSignaturePad()"
+                     (onEndEvent)="drawComplete()"></signature-pad>
+    </div>
+    <br/>
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-secondary" (click)="clearSignature()">Refazer assinatura</button>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="d-flex justify-content-center">
+          <button type="button" class="btn btn-success" [disabled]="!signatureForm.valid || !signatureImage"  (click)="saveSignature()">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<ngx-loading [show]="isLoading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>

@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -21,7 +22,9 @@ public class Supervisor extends EntityBaseImpl<Long> implements Signature {
     private String name;
     private String cellPhone;
     private String email;
-    private String signaturePicture;
+    @Lob
+    @Column(name = "signaturePicture", columnDefinition = "LONGBLOB")
+    private byte[] signaturePicture;
     @OneToMany(mappedBy = "supervisor")
     private List<Training> trainings;
 }

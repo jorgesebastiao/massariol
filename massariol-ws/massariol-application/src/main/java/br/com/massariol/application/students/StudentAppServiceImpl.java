@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
+
 @Service
 public class StudentAppServiceImpl implements StudentAppService {
     private final ModelMapper modelMapper;
@@ -61,7 +63,7 @@ public class StudentAppServiceImpl implements StudentAppService {
         var studentDatabase = studentRepository.findById(studentId)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
-        studentDatabase.setSignaturePicture(signature);
+        studentDatabase.setSignaturePicture(Base64.getEncoder().encode(signature.getBytes()));
         studentRepository.save(studentDatabase);
     }
 }

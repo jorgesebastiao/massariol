@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -23,7 +24,9 @@ public class Student extends EntityBaseImpl<Long> implements Signature {
     private String email;
     private String office;
     private String profilePicture;
-    private String signaturePicture;
+    @Lob
+    @Column(name = "signaturePicture", columnDefinition = "LONGBLOB")
+    private byte[] signaturePicture;
 
     @OneToMany(mappedBy = "student")
     private List<BusinessStudent> businessstudents;
