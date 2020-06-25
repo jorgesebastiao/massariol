@@ -23,4 +23,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x massariol-ws/gradlew
     - name: Build with Gradle
-      run: ./massariol-ws/gradlew bootJar
+      run: ./massariol-ws/gradlew build
