@@ -18,7 +18,10 @@
 
 .massariol_color{
   background: #f26520;
+}
 
+.backdrop {
+  position: fixed !important;
 }
 
 datatable-scroller { width: 100% !important; }

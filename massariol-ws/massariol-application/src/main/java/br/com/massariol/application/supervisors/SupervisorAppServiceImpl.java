@@ -61,7 +61,7 @@ public class SupervisorAppServiceImpl implements SupervisorAppService {
         var supervisorDatabase = supervisorRepository.findById(supervisorId)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
-        supervisorDatabase.setSignaturePicture(Base64.getEncoder().encode(signature.getBytes()));
+        supervisorDatabase.setSignaturePicture(signature.split(",")[1].getBytes());
         supervisorRepository.save(supervisorDatabase);
     }
 }
