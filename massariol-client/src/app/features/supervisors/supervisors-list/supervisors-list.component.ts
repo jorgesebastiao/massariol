@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Page } from '../../../shared/models';
 import { SupervisorService } from '../shared/supervisor.service';
 import { SupervisorEditComponent } from '../supervisor-edit/supervisor-edit.component';
-import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { ModalOptions, BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-supervisors-list',

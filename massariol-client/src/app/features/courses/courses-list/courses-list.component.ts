@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../../shared/models';
-import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { CourseService } from '../shared/course.service';
 import { CourseEditComponent } from '../course-edit/course-edit.component';
 

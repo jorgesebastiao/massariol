@@ -6,7 +6,7 @@ import {
   CourseUpdateCommand,
   CourseCreateCommand
 } from '../shared/course.model';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormService } from '../../../shared/services/form.service';
 import { ToastrService } from 'ngx-toastr';
 import { MdEditorOption } from 'ngx-markdown-editor';

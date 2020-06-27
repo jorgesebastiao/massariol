@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormService } from '../../../shared/services/form.service';
 import { InstructorService } from '../shared/instructor.service';
 import { ToastrService } from 'ngx-toastr';

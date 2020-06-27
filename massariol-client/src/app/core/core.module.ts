@@ -15,7 +15,7 @@ import {ToastService} from '../shared/services/toast.service';
 import {CepService} from '../shared/services/cep.service';
 
 import localePt from '@angular/common/locales/pt';
-import {BsModalService, ModalModule} from 'ngx-bootstrap';
+import {BsModalService, ModalModule} from 'ngx-bootstrap/modal';
 import {NgxLoadingModule} from 'ngx-loading';
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../../shared/models';
 import { CompanyService } from '../shared/company.service';
-import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { CompanyCreateUserComponent } from '../company-create-user/company-create-user.component';
 import { CompanyEditComponent } from '../company-edit/company-edit.component';
 

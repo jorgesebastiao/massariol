@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Page } from '../../../shared/models';
 import { CertificateService } from '../shared/certificate.service';
 import { TrainingService } from '../../trainings/shared/training.service';

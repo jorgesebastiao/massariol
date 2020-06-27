@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
 import {SecurityModule} from './features/security';
-import {setTheme} from 'ngx-bootstrap/utils';
+import { setTheme } from 'ngx-bootstrap/utils';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
