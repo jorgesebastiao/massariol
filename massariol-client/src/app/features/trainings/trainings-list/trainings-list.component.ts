@@ -1,4 +1,4 @@
-import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap';
+import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { Page } from '../../../shared/models';
 import { Component, OnInit } from '@angular/core';
 import { TrainingService } from '../shared/training.service';

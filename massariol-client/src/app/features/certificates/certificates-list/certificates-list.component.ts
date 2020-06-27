@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../../students/shared/student.service';
 import {Page} from '../../../shared/models';
-import {BsModalRef, BsModalService, ModalOptions} from 'ngx-bootstrap';
+import {BsModalRef, BsModalService, ModalOptions} from 'ngx-bootstrap/modal';
 import {CertificateListForPrintComponent} from '../certificate-list-for-print/certificate-list-for-print.component';
 import { BusinessStudentService } from '../../business-students/shared/business-student.service';
 

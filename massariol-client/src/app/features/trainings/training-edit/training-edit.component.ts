@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Observable, concat, of } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { BsModalRef, BsDatepickerConfig, defineLocale, BsLocaleService, ptBrLocale } from 'ngx-bootstrap';
+import { BsModalRef} from 'ngx-bootstrap/modal';
+import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { defineLocale, ptBrLocale } from 'ngx-bootstrap/chronos';
 import { FormService } from '../../../shared/services/form.service';
 import { TrainingService } from '../shared/training.service';
 import { ToastrService } from 'ngx-toastr';

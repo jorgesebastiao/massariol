@@ -7,7 +7,9 @@ import {RadioComponent} from './radio/radio.component';
 import {MaskFormatterDirective} from './directives';
 import {CpfPipe, CnpjPipe, CellPhone} from './pipes';
 import {MassariolRegistrationAndResearchComponent} from './massariol-registration-and-research';
-import {BsDatepickerModule, ButtonsModule, DatepickerModule, ModalModule} from 'ngx-bootstrap';
+import {BsDatepickerModule, DatepickerModule} from 'ngx-bootstrap/datepicker';
+import { ModalModule} from 'ngx-bootstrap/modal';
+import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {NgxLoadingModule} from 'ngx-loading';
 import { NgSelectModule } from '@ng-select/ng-select';
 

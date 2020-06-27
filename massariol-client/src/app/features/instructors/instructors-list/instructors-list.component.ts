@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Page} from '../../../shared/models';
 import {InstructorService} from '../shared/instructor.service';
-import {BsModalRef, BsModalService, ModalOptions} from 'ngx-bootstrap';
+import {BsModalRef, BsModalService, ModalOptions} from 'ngx-bootstrap/modal';
 import {InstructorEditComponent} from '../instructor-edit/instructor-edit.component';
 
 @Component({

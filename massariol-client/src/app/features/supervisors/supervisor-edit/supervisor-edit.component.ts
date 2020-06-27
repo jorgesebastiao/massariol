@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CpfValidator } from '../../../shared/validators';
 import { AbstractControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormService } from '../../../shared/services/form.service';
 import { ToastrService } from 'ngx-toastr';
 import { SupervisorService } from '../shared/supervisor.service';

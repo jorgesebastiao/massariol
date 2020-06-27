@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { BsModalRef } from 'ngx-bootstrap';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FormService } from '../../../shared/services/form.service';
 import { StudentService } from '../shared/student.service';
 import { ToastrService } from 'ngx-toastr';
