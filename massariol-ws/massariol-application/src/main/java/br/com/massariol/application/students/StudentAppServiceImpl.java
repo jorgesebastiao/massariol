@@ -63,7 +63,7 @@ public class StudentAppServiceImpl implements StudentAppService {
         var studentDatabase = studentRepository.findById(studentId)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
-        studentDatabase.setSignaturePicture(Base64.getEncoder().encode(signature.getBytes()));
+        studentDatabase.setSignaturePicture(signature.split(",")[1].getBytes());
         studentRepository.save(studentDatabase);
     }
 }

@@ -16,19 +16,19 @@ public class CertificateDto {
     private LocalDate finishDate;
     private String instructorCpf;
     private String instructorName;
-    private byte[] instructorSignature;
+    private String instructorSignature;
     private String supervisorCpf;
     private String supervisorName;
-    private byte[] supervisorSignature;
+    private String supervisorSignature;
     private LocalDate startDate;
     private String studentCpf;
     private String studentName;
-    private byte[] studentSignature;
+    private String studentSignature;
     private int workload;
     private static Map<String, Object> parameters;
     private static Map<String, Object> backParameters;
 
-    public static Map<String, Object> getParameters(String imagePath) {
+    public Map<String, Object> getParameters(String imagePath) {
 
         if (parameters == null) {
             parameters = new HashMap<>();
@@ -38,7 +38,7 @@ public class CertificateDto {
         return parameters;
     }
 
-    public static Map<String, Object> getLogo(String path) {
+    public Map<String, Object> getLogo(String path) {
 
         if (backParameters == null) {
             backParameters = new HashMap<>();
@@ -47,4 +47,5 @@ public class CertificateDto {
 
         return backParameters;
     }
+
 }
