@@ -21,6 +21,11 @@ buildscript {
     }
 }
 
+wrapper {
+    distributionType = Wrapper.DistributionType.BIN
+    gradleVersion = '5.2.1'
+}
+
 allprojects {
     group = 'br.com.massariol'
     repositories {
