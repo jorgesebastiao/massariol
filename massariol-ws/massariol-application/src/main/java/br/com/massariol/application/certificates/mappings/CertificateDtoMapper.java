@@ -19,19 +19,19 @@ public class CertificateDtoMapper {
                 map().setCourseName(source.getCourse().getName());
                 map().setInstructorCpf(source.getInstructor().getCpf());
                 map().setInstructorName(source.getInstructor().getName());
-                map().setInstructorSignature(source.getInstructor().getSignaturePicture());
+                map().setInstructorSignature(source.getInstructor().getSignature());
                 map().setFinishDate(source.getFinishDate());
 
                 map().setSupervisorCpf(source.getSupervisor().getCpf());
                 map().setSupervisorName(source.getSupervisor().getName());
-                map().setSupervisorSignature(source.getSupervisor().getSignaturePicture());
+                map().setSupervisorSignature(source.getSupervisor().getSignature());
 
                 map().setStartDate(source.getStartDate());
 
                 map().setStudentId(source.getBusinessStudent().getStudent().getId());
                 map().setStudentCpf(source.getBusinessStudent().getStudent().getCpf());
                 map().setStudentName(source.getBusinessStudent().getStudent().getName());
-                map().setStudentSignature(source.getBusinessStudent().getStudent().getSignaturePicture());
+                map().setStudentSignature(source.getBusinessStudent().getStudent().getSignature());
 
                 map().setWorkload(source.getCourse().getWorkload());
             }

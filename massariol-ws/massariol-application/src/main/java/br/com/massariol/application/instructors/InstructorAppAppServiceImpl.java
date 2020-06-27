@@ -61,7 +61,7 @@ public class InstructorAppAppServiceImpl implements InstructorAppService {
         var instructorDatabase = instructorRepository.findById(instructorId)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
-        instructorDatabase.setSignaturePicture(Base64.getEncoder().encode(signature.getBytes()));
+        instructorDatabase.setSignaturePicture(signature.split(",")[1].getBytes());
         instructorRepository.save(instructorDatabase);
     }
 

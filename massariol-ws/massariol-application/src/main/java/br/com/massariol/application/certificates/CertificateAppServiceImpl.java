@@ -7,13 +7,19 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.modelmapper.ModelMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.io.InputStream;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CertificateAppServiceImpl implements CertificateAppService {
@@ -33,13 +39,29 @@ public class CertificateAppServiceImpl implements CertificateAppService {
         var certificateDto = modelMapper.map(training, CertificateDto.class);
         List<CertificateDto> certificateDtoList = Collections.singletonList(certificateDto);
 
-        JasperPrint jasperPrint = JasperFillManager.fillReport(getUrlReport(), CertificateDto.getParameters(getImagePath()),
+        certificateDtoList.forEach(x -> {
+            var parser = Parser.builder().build();
+            var document = parser.parse(x.getCourseGuideline());
+            var renderer = HtmlRenderer.builder().build();
+            x.setCourseGuideline(renderer.render(document).replaceAll("\\r\\n|\\r|\\n", "<br/>"));
+        });
+
+        getFont();
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(getUrlReport(), certificateDto.getParameters(getImagePath()),
                 new JRBeanCollectionDataSource(certificateDtoList, false));
 
-        jasperPrint.addPage(JasperFillManager.fillReport(getUrlBackOfCertificate(), CertificateDto.getLogo(getLogoPath()),
+        jasperPrint.addPage(JasperFillManager.fillReport(getUrlBackOfCertificate(), certificateDto.getLogo(getLogoPath()),
                 new JRBeanCollectionDataSource(certificateDtoList, false)).getPages().get(0));
 
         return JasperExportManager.exportReportToPdf(jasperPrint);
+    }
+
+    public void getFont() throws IOException, FontFormatException {
+        ClassLoader classLoader = getClass().getClassLoader();
+        Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(classLoader.getResourceAsStream("century_schoolbook.ttf")));
+        GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        graphicsEnvironment.registerFont(font);
     }
 
     private String getImagePath() {
