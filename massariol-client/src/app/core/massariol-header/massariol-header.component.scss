@@ -1,0 +1,44 @@
+.header {
+  padding-left: 20px ;
+  background: #272727;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 15px;
+
+  overflow-x: hidden;
+  transition: 0.5s;
+
+  -webkit-box-shadow: 0px 10px 40px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 10px 40px 0px rgba(0,0,0,0.3);
+  box-shadow: 0px 10px 40px 0px rgba(0,0,0,0.3);
+}
+
+.content-header {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center
+}
+
+.content-header .btn {
+  color: #757575;
+}
+
+.content-header .btn:focus {
+  box-shadow: none !important;
+}
+
+.imgStyle {
+ max-width:200px;
+ max-height:55px;
+ width: auto;
+ height: auto;
+}
+
+.offset {
+  margin-left: 5px;
+}
