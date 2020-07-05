@@ -29,6 +29,7 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+      working-directory: ${{env.back-end}}
 
     - name: Build with Gradle
       run: ./gradlew build
