@@ -16,6 +16,7 @@ hs_err_pid*
 bin
 target
 build/
+dist/
 .gradle
 .idea/
 .vscode/
