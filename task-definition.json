@@ -25,8 +25,8 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 512,
-      "memoryReservation": null,
+      "memory": null,
+      "memoryReservation": 512,
       "volumesFrom": [],
       "stopTimeout": null,
       "image": "834426290814.dkr.ecr.sa-east-1.amazonaws.com/ecr-massariol-repo:latest",
@@ -50,19 +50,25 @@
     }
   ],
   "placementConstraints": [],
-  "memory": "1024",
+  "memory": null,
   "taskRoleArn": null,
   "compatibilities": [
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:834426290814:task-definition/mssariol:1",
-  "family": "mssariol",
+  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:834426290814:task-definition/massariol:2",
+  "family": "massariol",
   "requiresAttributes": [
     {
       "targetId": null,
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     }
   ],
   "pidMode": null,
@@ -70,8 +76,8 @@
     "EC2"
   ],
   "networkMode": "bridge",
-  "cpu": "1024",
-  "revision": 1,
+  "cpu": null,
+  "revision": 2,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
