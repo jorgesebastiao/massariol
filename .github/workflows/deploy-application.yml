@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      front-end: ./massariol-client
+      back-end: ./massariol-ws
+
+    steps:
+    - name: checkout project
+    - uses: actions/checkout@v2
+    
+    - name: Setup Node.js environment
+    - uses: actions/setup-node@v2.1.0
+      
+    
+    - name: npm install and npm run build
+      run: | 
+          npm i 
+          npm run build:prod
+      working-directory: ${{env.front-end}}
+      
+    - name: Add java dependencies
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11.0.4
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build with Gradle
+      run: ./gradlew build
+      working-directory: ${{env.back-end}}
