@@ -1,4 +1,4 @@
-name: CI
+name: Deploy Application
 
 on:
   push:
@@ -12,12 +12,9 @@ jobs:
       back-end: ./massariol-ws
 
     steps:
-    - name: checkout project
     - uses: actions/checkout@v2
     
-    - name: Setup Node.js environment
     - uses: actions/setup-node@v2.1.0
-      
     
     - name: npm install and npm run build
       run: | 
