@@ -19,7 +19,7 @@ jobs:
     - name: npm install and npm run build
       run: | 
           npm i 
-          npm run build:prod
+          npm run build --prod
       working-directory: ${{env.front-end}}
       
     - name: Add java dependencies
