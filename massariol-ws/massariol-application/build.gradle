@@ -1,5 +1,5 @@
 jar {
-    archiveBaseName = 'massariol-module-application'
+    archiveBaseName = 'massariol-application'
     archiveVersion = '1.0.0-SNAPSHOT'
 }
 

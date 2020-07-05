@@ -7,25 +7,23 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/v2/**","/swagger*").permitAll()
-                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .cors()
-                .and()
-                .csrf().disable();
-             // .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+        http
+            .authorizeRequests()
+            .antMatchers(HttpMethod.OPTIONS,"/api/**").permitAll()
+            .antMatchers("/api/**").authenticated()
+            .anyRequest().permitAll()
+            .and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .and()
+            .cors()
+            .and()
+            .csrf().disable();
     }
 
     public void configure(ResourceServerSecurityConfigurer resources) {

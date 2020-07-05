@@ -5,7 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot",
+    "build": "npm run clean && ng build --aot",
+    "build:prod": "npm run clean && ng build --prod --aot",
+    "clean": "rimraf ../massariol-ws/massariol-client/dist/*",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

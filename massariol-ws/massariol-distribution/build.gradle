@@ -7,7 +7,8 @@ executableDir = 'bin'
 mainClassName='br.com.massariol.distribution.DistributionApplication'
 
 jar {
-    archiveBaseName = 'massariol-module-distribution'
+    archiveBaseName = 'massariol-distribution'
+    archiveVersion = '1.0.0-SNAPSHOT'
 }
 
 bootRun {
@@ -19,6 +20,7 @@ ext {
 }
 
 dependencies {
+    runtimeOnly project(':massariol-client')
     compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
     compile group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
     compile group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0.1'

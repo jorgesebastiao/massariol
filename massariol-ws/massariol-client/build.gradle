@@ -1,0 +1,7 @@
+plugins {
+  id 'java'
+}
+
+jar {
+  from('dist') { into 'public'}
+}

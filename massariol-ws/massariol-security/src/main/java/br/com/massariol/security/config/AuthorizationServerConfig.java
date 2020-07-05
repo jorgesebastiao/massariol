@@ -63,7 +63,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.accessTokenConverter(accessTokenConverter())
 				.reuseRefreshTokens(false)
 				.authenticationManager(authenticationManager)
-				.userDetailsService(userDetailsService);
+				.userDetailsService(userDetailsService)
+				.pathMapping("/oauth/token","/api/oauth/token")
+		        .pathMapping("/oauth/token_key","/api/oauth/token_key")
+		        .pathMapping("/oauth/check_token","/api/oauth/check_token");
 	}
 
 	@Bean
