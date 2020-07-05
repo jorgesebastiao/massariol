@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../../environments/environment';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {Token} from './token.model';
 
@@ -36,18 +36,17 @@ export class AuthService {
       .then(response => {
         this.addToken(response.access_token);
         return Promise.resolve(null);
-      });
-    /*
+      })
       .catch(error => {
         if (error.status === 400) {
           console.log(error);
-       //   const failed = error.json();
-          // if (failed.error === 'invalid_grant') {
-          //   return Promise.reject('usuario ou senha inválidos!!!');
-          // }
+          const failed = error.json();
+          if (failed.error === 'invalid_grant') {
+            return Promise.reject('usuario ou senha inválidos!!!');
+          }
         }
         return Promise.reject(error);
-      });*/
+      });
   }
 
   refreshToken(): Promise<void> {
@@ -80,6 +79,11 @@ export class AuthService {
     return localStorage.getItem(environment.tokenName);
   }
 
+  isNotLogged(){
+    const token = this.getToken();
+    return token == null;
+  }
+
   isValidToken() {
     const token = this.getToken();
     return token != null && !this.jwtHelper.isTokenExpired(token);
@@ -89,7 +93,6 @@ export class AuthService {
     const token = this.getToken();
     return !token || this.jwtHelper.isTokenExpired(token);
   }
-
 
   isAllowed(permission: string) {
     return this.jwtPayload && this.jwtPayload.authorities.includes(permission);

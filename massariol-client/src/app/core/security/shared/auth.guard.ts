@@ -1,7 +1,7 @@
 import {ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot} from '@angular/router';
 import {Injectable} from '@angular/core';
-import {AuthService} from './auth.service';
 import {Observable} from 'rxjs';
+import {AuthService} from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanLoad, CanActivate {
@@ -15,8 +15,8 @@ export class AuthGuard implements CanLoad, CanActivate {
     return true;
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService.isAccessTokenInvalid()) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.authService.isNotLogged() && this.authService.isAccessTokenInvalid()) {
       return this.authService.refreshToken()
         .then(() => {
           if (this.authService.isAccessTokenInvalid()) {
@@ -29,7 +29,7 @@ export class AuthGuard implements CanLoad, CanActivate {
           return true;
         });
     } else if (route.data.roles && !this.authService.haveAnyPermission(route.data.roles)) {
-      this.router.navigate(['/nao-autorizado']).then(() => {
+      this.router.navigate(['/page-not-authorized']).then(() => {
         return false;
       });
     }

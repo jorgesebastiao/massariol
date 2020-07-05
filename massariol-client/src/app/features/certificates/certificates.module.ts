@@ -7,6 +7,8 @@ import {SharedModule} from '../../shared/shared.module';
 import {StudentSharedModule} from '../students/shared/student-shared.module';
 import {CertificateListForPrintComponent} from './certificate-list-for-print/certificate-list-for-print.component';
 import { BusinessStudentSharedModule } from '../business-students/shared/business-students-shared.module';
+import { SecuritySharedModule } from '../../core/security';
+import { CertificateSharedModule } from './shared/certificate-shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { BusinessStudentSharedModule } from '../business-students/shared/busines
     CertificateListForPrintComponent],
   imports: [
     SharedModule,
+    SecuritySharedModule,
     CertificatesRoutingModule,
+    CertificateSharedModule,
     StudentSharedModule,
     BusinessStudentSharedModule
   ],

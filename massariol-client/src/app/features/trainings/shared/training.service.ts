@@ -1,5 +1,5 @@
 import { environment } from '../../../../environments/environment';
-import { AuthHttp } from '../../security/auth-http';
+import { AuthHttp } from '../../../core/security';
 import { Injectable } from '@angular/core';
 import { Page } from '../../../shared/models';
 import { Observable } from 'rxjs';

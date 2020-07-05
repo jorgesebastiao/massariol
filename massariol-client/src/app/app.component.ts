@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import {MassariolNavbarService} from './core/massariol-navbar/shared/massariol-navbar.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              public navbarService: MassariolNavbarService) { }
 
   displayNavBar() {
     return this.router.url !== '/login';
