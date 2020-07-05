@@ -1,30 +1,32 @@
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f26520;
+  overflow-x: hidden;
+  padding-top: 70px;
 
-.containerLink {
-  width: 100%;
-  padding: 0
-}
-.containerImage {
-  height: 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center
-}
+  border-right: #9c9c9c 1px solid;
 
- .imgStyle {
-   max-width:200px;
-   max-height:60px;
-   width: auto;
-   height: auto;
- }
+  -webkit-box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.3);
+  box-shadow: 10px 0px 40px 0px rgba(0,0,0,0.3);
 
-.shadowBoxNavbar {
-  -webkit-box-shadow: 0px 10px 20px -11px rgba(0,0,0,0.45);
-  -moz-box-shadow: 0px 10px 20px -11px rgba(0,0,0,0.45);
-  box-shadow: 0px 10px 20px -11px rgba(0,0,0,0.45);
 }
 
-.header {
-  margin-bottom: 20px;
-  z-index: 99999;
+.sidenav ul li a {
+  color: white;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.selected {
+  background: #b94600;
+}
+
+.sidenav ul li :hover {
+  background: #b94600;
 }

@@ -17,6 +17,7 @@ import {CepService} from '../shared/services/cep.service';
 import localePt from '@angular/common/locales/pt';
 import {BsModalService, ModalModule} from 'ngx-bootstrap/modal';
 import {NgxLoadingModule} from 'ngx-loading';
+import { MassariolHeaderComponent } from './massariol-header/massariol-header.component';
 
 
 registerLocaleData(localePt);
@@ -32,9 +33,11 @@ registerLocaleData(localePt);
   ],
   declarations: [MassariolFooterComponent,
     MassariolNavbarComponent,
-    NotAuthorizedComponent],
+    NotAuthorizedComponent,
+    MassariolHeaderComponent],
   exports: [MassariolFooterComponent,
     MassariolNavbarComponent,
+    MassariolHeaderComponent,
     ToastrModule,
     NgxLoadingModule,
     NotAuthorizedComponent,
