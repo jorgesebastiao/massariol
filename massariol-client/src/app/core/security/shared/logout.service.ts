@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../../environments/environment';
 import {AuthService} from './auth.service';
 import {AuthHttp} from './auth-http';
 
@@ -20,8 +20,6 @@ export class LogoutService {
     return this.httpClient.delete(this.apiUrl, {withCredentials: true})
       .toPromise()
       .then(() => {
-        this.authService.cleanAcessToken();
-      }).catch(() => {
         this.authService.cleanAcessToken();
       });
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AuthHttp} from '../../security/auth-http';
+import { AuthHttp } from '../../../core/security';
 import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {Page} from '../../../shared/models';

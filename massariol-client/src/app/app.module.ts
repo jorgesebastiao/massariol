@@ -4,9 +4,10 @@ import {NgModule} from '@angular/core';
 import { AppComponent } from './app.component';
 import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
-import {SecurityModule} from './features/security';
 import { setTheme } from 'ngx-bootstrap/utils';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SecuritySharedModule } from './core/security';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
-    SecurityModule,
+    SharedModule,
+    SecuritySharedModule,
     AppRoutingModule
   ],
   providers: [],

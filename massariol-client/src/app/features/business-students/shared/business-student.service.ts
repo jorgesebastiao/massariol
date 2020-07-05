@@ -3,7 +3,7 @@ import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { Page } from '../../../shared/models';
-import { AuthHttp } from '../../security/auth-http';
+import { AuthHttp } from '../../../core/security';
 
 @Injectable({
     providedIn: 'root'

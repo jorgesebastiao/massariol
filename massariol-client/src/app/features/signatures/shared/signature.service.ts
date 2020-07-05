@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AuthHttp} from '../../security/auth-http';
+import { AuthHttp } from '../../../core/security';
 import {environment} from '../../../../environments/environment';
 import {SignatureCreateCommand} from './signature.model';
 import {Observable} from 'rxjs';

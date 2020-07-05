@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import {AuthService} from './auth.service';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHandler} from '@angular/common/http';
 import {Observable, from} from 'rxjs';
+import {AuthService} from './auth.service';
 
-export class NotAuthenticatedError {}
+export class NotAuthenticatedError {
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthHttp extends HttpClient  {
+export class AuthHttp extends HttpClient {
 
   constructor(
     private authService: AuthService,
@@ -48,10 +49,10 @@ export class AuthHttp extends HttpClient  {
   private makeRequest<T>(fn: Function): Observable<T> {
     if (this.authService.isAccessTokenInvalid()) {
       const callingNewAccessToken = this.authService.refreshToken()
-        .then(  () => {
-        if (!this.authService.isValidToken()) {
-          throw new NotAuthenticatedError();
-        }
+        .then(() => {
+          if (!this.authService.isValidToken()) {
+            throw new NotAuthenticatedError();
+          }
           return fn().toPromise();
         });
 
