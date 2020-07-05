@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignatureEditComponent } from './signature-edit/signature-edit.component';
-import { AuthGuard } from '../security';
+import { AuthGuard } from '../../core/security';
 
 const routes: Routes = [
   {

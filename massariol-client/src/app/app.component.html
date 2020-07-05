@@ -1,8 +1,1 @@
-<app-massariol-header *ngIf="displayNavBar()"></app-massariol-header>
-
-<app-massariol-navbar *ngIf="displayNavBar()"></app-massariol-navbar>
-<div [ngClass]="{'content-data': displayNavBar(), 'content-with-menu': navbarService.visible}">
-  <router-outlet></router-outlet>
-</div>
-
-
+<router-outlet></router-outlet>

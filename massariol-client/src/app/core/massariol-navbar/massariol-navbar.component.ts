@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService, LogoutService} from '../../features/security';
 import {Router} from '@angular/router';
 import {MassariolNavbarService} from './shared/massariol-navbar.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { LogoutService, AuthService } from '../security';
 
 @Component({
   selector: 'app-massariol-navbar',

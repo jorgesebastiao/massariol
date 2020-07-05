@@ -1,4 +1,4 @@
-import {environment} from '../../../environments/environment';
+import {environment} from '../../../../environments/environment';
 import {JwtConfigService} from './jwt-config.service';
 
 export function JwtOptionsFactory(jwtConfigService: JwtConfigService) {
@@ -9,6 +9,7 @@ export function JwtOptionsFactory(jwtConfigService: JwtConfigService) {
     skipWhenExpired: false
   };
 }
+
 export function tokenGetter() {
   return localStorage.getItem(environment.tokenName);
 }
