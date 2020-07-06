@@ -23,6 +23,22 @@ public class TrainingSpecification {
         };
     }
 
+    public static  Specification<Training> filterByCourseOrStudent(String filter){
+        return (root, query, builder) -> {
+            return where(courseFilter(filter))
+                    .or(studentFilter(filter))
+                    .toPredicate(root, query, builder);
+        };
+    }
+
+    static Specification<Training> studentFilter(String filter){
+        return (root, query, builder) -> {
+            var businessStudentJoin = root.join("businessStudent");
+            var studentJoin = businessStudentJoin.join("student");
+            return builder.like(studentJoin.get("name"), "%" + filter + "%");
+        };
+    }
+
     static Specification<Training> courseFilter(String filter) {
         return (root, query, builder) -> {
             var courseJoin = root.join("course");

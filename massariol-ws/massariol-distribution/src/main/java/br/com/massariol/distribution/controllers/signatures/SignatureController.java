@@ -4,7 +4,6 @@ import br.com.massariol.application.signatures.SignatureAppService;
 import br.com.massariol.application.signatures.commands.SignatureCreateCommand;
 import br.com.massariol.application.signatures.queries.SignatureGetEntityQuery;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
-import br.com.massariol.distribution.controllers.instructors.viewmodels.InstructorDetailViewModel;
 import br.com.massariol.distribution.controllers.signatures.viewmodels.SignatureViewModel;
 import br.com.massariol.domain.features.signatures.SignatureType;
 import io.swagger.annotations.Api;

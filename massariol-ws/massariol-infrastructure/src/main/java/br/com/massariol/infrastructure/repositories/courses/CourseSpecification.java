@@ -1,6 +1,5 @@
 package br.com.massariol.infrastructure.repositories.courses;
 
-import br.com.massariol.domain.features.companies.Company;
 import br.com.massariol.domain.features.courses.Course;
 import org.springframework.data.jpa.domain.Specification;
 

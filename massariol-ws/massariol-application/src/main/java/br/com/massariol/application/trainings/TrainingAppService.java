@@ -1,10 +1,7 @@
 package br.com.massariol.application.trainings;
 
-import br.com.massariol.application.supervisors.commands.SupervisorCreateCommand;
-import br.com.massariol.application.supervisors.commands.SupervisorUpdateCommand;
 import br.com.massariol.application.trainings.commands.TrainingCreateCommand;
 import br.com.massariol.application.trainings.commands.TrainingUpdateCommand;
-import br.com.massariol.domain.features.supervisors.Supervisor;
 import br.com.massariol.domain.features.trainings.Training;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

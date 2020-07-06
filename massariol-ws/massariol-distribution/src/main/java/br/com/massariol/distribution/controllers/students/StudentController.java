@@ -1,9 +1,7 @@
 package br.com.massariol.distribution.controllers.students;
 
-import br.com.massariol.application.instructors.commands.InstructorSignatureCommand;
 import br.com.massariol.application.students.StudentAppService;
 import br.com.massariol.application.students.commands.StudentCreateCommand;
-import br.com.massariol.application.students.commands.StudentSignatureCommand;
 import br.com.massariol.application.students.commands.StudentUpdateCommand;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
 import br.com.massariol.distribution.controllers.students.viewmodels.StudentDetailViewModel;

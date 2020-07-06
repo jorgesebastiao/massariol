@@ -1,7 +1,6 @@
 package br.com.massariol.application.instructors;
 
 import br.com.massariol.application.instructors.commands.InstructorCreateCommand;
-import br.com.massariol.application.instructors.commands.InstructorSignatureCommand;
 import br.com.massariol.application.instructors.commands.InstructorUpdateCommand;
 import br.com.massariol.domain.features.exceptions.ExceptionCpfInUse;
 import br.com.massariol.domain.features.instructors.Instructor;
@@ -12,8 +11,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Base64;
 
 @Service
 public class InstructorAppAppServiceImpl implements InstructorAppService {

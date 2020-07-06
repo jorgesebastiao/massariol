@@ -1,7 +1,5 @@
 package br.com.massariol.distribution.controllers.signatures.mapping;
 
-import br.com.massariol.distribution.controllers.instructors.viewmodels.InstructorDetailViewModel;
-import br.com.massariol.distribution.controllers.instructors.viewmodels.InstructorResumeViewModel;
 import br.com.massariol.distribution.controllers.signatures.viewmodels.SignatureViewModel;
 import br.com.massariol.domain.features.instructors.Instructor;
 import br.com.massariol.domain.features.signatures.SignatureType;
