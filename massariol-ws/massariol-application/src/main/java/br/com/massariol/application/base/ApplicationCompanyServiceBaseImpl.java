@@ -1,7 +1,6 @@
 package br.com.massariol.application.base;
 
 import br.com.massariol.infrastructure.repositories.base.RepositoryCompanyBase;
-import br.com.massariol.infrastructure.repositories.companies.CompanyRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

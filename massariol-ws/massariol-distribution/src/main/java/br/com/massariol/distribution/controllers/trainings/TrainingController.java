@@ -4,7 +4,6 @@ import br.com.massariol.application.trainings.TrainingAppService;
 import br.com.massariol.application.trainings.commands.TrainingCreateCommand;
 import br.com.massariol.application.trainings.commands.TrainingUpdateCommand;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
-import br.com.massariol.distribution.controllers.businessstudents.viewmodel.BusinessStudentViewModel;
 import br.com.massariol.distribution.controllers.trainings.viewmodels.TrainingDetailViewModel;
 import br.com.massariol.distribution.controllers.trainings.viewmodels.TrainingResumeViewModel;
 import br.com.massariol.distribution.controllers.trainings.viewmodels.TrainingWithCertificateViewModel;

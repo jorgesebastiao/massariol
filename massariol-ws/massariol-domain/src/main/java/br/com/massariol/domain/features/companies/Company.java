@@ -2,13 +2,11 @@ package br.com.massariol.domain.features.companies;
 
 import br.com.massariol.domain.common.EntityBaseImpl;
 import br.com.massariol.domain.features.businessstudents.BusinessStudent;
-import br.com.massariol.domain.features.trainings.Training;
 import br.com.massariol.domain.features.users.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.List;

@@ -1,9 +1,7 @@
 package br.com.massariol.application.students;
 
 import br.com.massariol.application.students.commands.StudentCreateCommand;
-import br.com.massariol.application.students.commands.StudentSignatureCommand;
 import br.com.massariol.application.students.commands.StudentUpdateCommand;
-import br.com.massariol.domain.features.exceptions.ExceptionCnpjInUse;
 import br.com.massariol.domain.features.exceptions.ExceptionCpfInUse;
 import br.com.massariol.domain.features.students.Student;
 import br.com.massariol.infrastructure.repositories.students.StudentRepository;
@@ -13,8 +11,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Base64;
 
 @Service
 public class StudentAppServiceImpl implements StudentAppService {

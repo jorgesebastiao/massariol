@@ -2,7 +2,6 @@ package br.com.massariol.domain.features.courses;
 
 import br.com.massariol.domain.common.EntityBaseImpl;
 import br.com.massariol.domain.features.trainings.Training;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -1,7 +1,6 @@
 package br.com.massariol.application.supervisors;
 
 import br.com.massariol.application.supervisors.commands.SupervisorCreateCommand;
-import br.com.massariol.application.supervisors.commands.SupervisorSignatureCommand;
 import br.com.massariol.application.supervisors.commands.SupervisorUpdateCommand;
 import br.com.massariol.domain.features.exceptions.ExceptionCpfInUse;
 import br.com.massariol.domain.features.supervisors.Supervisor;
@@ -12,8 +11,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Base64;
 
 @Service
 public class SupervisorAppServiceImpl implements SupervisorAppService {
