@@ -9,6 +9,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 })
 export class MassariolRegistrationAndResearchComponent implements OnInit {
 
+  @Input() buttonIcon: string;
   @Input() showButton: boolean;
   @Input() buttonTitle: string;
   @Input() brand: string;
@@ -23,6 +24,16 @@ export class MassariolRegistrationAndResearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.buttonIcon === undefined || this.buttonIcon === null) {
+      this.buttonIcon = 'far fa-plus-square fa-lg';
+    }else{
+      this.buttonIcon += ' fa-lg';
+    }
+
+    if (this.buttonTitle === undefined || this.buttonTitle === null) {
+      this.buttonTitle = 'Novo';
+    }
+
     if (this.showButton === undefined || this.showButton === null) {
       this.showButton = true;
     }

@@ -6,7 +6,7 @@
     </div>
     <ul class="navbar-nav  mr-auto" *ngIf="showButton">
       <li class="active">
-        <button class="btn btn-default" (click)="newRegisterChanged()">{{buttonTitle}}</button>
+        <button class="btn btn-default" (click)="newRegisterChanged()"> <span class="{{buttonIcon}}" aria-hidden="true"></span> {{buttonTitle}}</button>
       </li>
     </ul>
     <form [formGroup]="searchForm" class="form-inline my-2 my-lg-0" role="search">

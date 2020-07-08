@@ -21,6 +21,8 @@ export class LogoutService {
       .toPromise()
       .then(() => {
         this.authService.cleanAcessToken();
+      }).catch(()=>{
+        this.authService.cleanAcessToken();
       });
   }
 }

@@ -99,7 +99,7 @@ export class TrainingEditComponent implements OnInit {
 
     initForms() {
         this.trainingForm = this.formBuilder.group({
-            startDate: this.formBuilder.control('', [Validators.required]),
+            startDate: this.formBuilder.control(new Date(), [Validators.required]),
             finishDate: this.formBuilder.control('', [Validators.required]),
             realizationDate: this.formBuilder.control('', [Validators.required]),
             courseId: this.formBuilder.control('', [Validators.required]),
