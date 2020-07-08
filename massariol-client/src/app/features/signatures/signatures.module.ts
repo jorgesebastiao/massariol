@@ -3,6 +3,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { SignaturesRoutingModule } from './signatures-routing.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { SignatureEditComponent } from './signature-edit/signature-edit.component';
+import { SignatureSharedModule } from './shared/signature-shared.module';
 
 @NgModule({
     declarations: [
@@ -11,6 +12,7 @@ import { SignatureEditComponent } from './signature-edit/signature-edit.componen
     imports: [
         SignaturesRoutingModule,
         SharedModule,
+        SignatureSharedModule,
         SignaturePadModule 
         ],
     entryComponents: []

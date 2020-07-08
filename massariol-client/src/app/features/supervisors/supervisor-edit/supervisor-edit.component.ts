@@ -31,11 +31,11 @@ export class SupervisorEditComponent implements OnInit {
   ngOnInit() {
     this.onClose = new Subject();
     this.isEdit = false;
-    this.title = 'Cadastro de supervisor';
+    this.title = 'Cadastro de responsável técnico';
     this.initForms();
     if (this.supervisorId) {
       this.isEdit = true;
-      this.title = 'Edição de supervisor';
+      this.title = 'Edição de responsável técnico';
       this.getSupervisor();
     }
   }
