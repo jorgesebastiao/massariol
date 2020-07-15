@@ -135,6 +135,11 @@ export class SignatureEditComponent implements OnInit, AfterViewInit  {
     this.signaturePad.clear();
   }
 
+  clearPerson() {
+    this.signatureForm.controls['entityId'].setValue(null);
+  }
+
+
   resizeSignaturePad() {
     this.signaturePad.set('canvasWidth', document.getElementById('signaturePad').offsetWidth);
   }
