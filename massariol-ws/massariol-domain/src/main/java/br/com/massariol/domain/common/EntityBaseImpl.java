@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @MappedSuperclass
-public class EntityBaseImpl<T> implements IEntityBase<T> {
+public abstract class EntityBaseImpl<T> {
 
     @EqualsAndHashCode.Include
     @Id
