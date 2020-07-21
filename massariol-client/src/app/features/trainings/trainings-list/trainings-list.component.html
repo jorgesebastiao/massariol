@@ -22,6 +22,30 @@
   [offset]="page.pageNumber"
   [limit]="page.size"
   (page)='setPage($event)'>
+  <ngx-datatable-column name="student">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Aluno
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.student}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="course">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Curso
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.course}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="company">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Empresa
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.company}}
+    </ng-template>
+  </ngx-datatable-column>
   <ngx-datatable-column name="startDate">
     <ng-template let-column="column" ngx-datatable-header-template>
       Inicio
@@ -36,22 +60,6 @@
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
       {{row.finishDate}}
-    </ng-template>
-  </ngx-datatable-column>
-  <ngx-datatable-column name="expirationDate">
-    <ng-template let-column="column" ngx-datatable-header-template>
-      Validade
-    </ng-template>
-    <ng-template let-row="row" ngx-datatable-cell-template>
-      {{row.expirationDate}}
-    </ng-template>
-  </ngx-datatable-column>
-  <ngx-datatable-column name="realizationDate">
-    <ng-template let-column="column" ngx-datatable-header-template>
-      Realizado Em
-    </ng-template>
-    <ng-template let-row="row" ngx-datatable-cell-template>
-      {{row.realizationDate}}
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name="Ações" prop="id" [sortable]="false" [canAutoResize]="false" [draggable]="false" [resizeable]="false" >

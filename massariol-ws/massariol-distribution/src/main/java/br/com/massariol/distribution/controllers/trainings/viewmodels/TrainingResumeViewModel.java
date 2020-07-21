@@ -9,8 +9,9 @@ import java.time.LocalDate;
 @Setter
 public class TrainingResumeViewModel {
     private Long id;
+    private String company;
+    private String course;
     private LocalDate startDate;
+    private String student;
     private LocalDate finishDate;
-    private LocalDate expirationDate;
-    private LocalDate realizationDate;
 }
