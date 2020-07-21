@@ -42,7 +42,7 @@ public class TrainingAppServiceImpl implements TrainingAppService {
     }
 
     public Page<Training> findAll(Pageable pageable, String filter) {
-        return trainingRepository.findAll(TrainingSpecification.filterByCourseOrStudent(filter),pageable);
+        return trainingRepository.findAll(TrainingSpecification.filterByCompanyOrCourseOrStudent(filter),pageable);
     }
 
     public Training getById(Long id) {

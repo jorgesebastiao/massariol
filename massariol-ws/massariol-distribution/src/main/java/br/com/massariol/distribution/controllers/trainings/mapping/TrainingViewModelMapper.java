@@ -39,7 +39,9 @@ public class TrainingViewModelMapper {
     static PropertyMap<Training, TrainingResumeViewModel> trainingTrainingResumeViewModelPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-
+                map().setCompany(source.getBusinessStudent().getCompany().getCorporateName());
+                map().setStudent(source.getBusinessStudent().getStudent().getName());
+                map().setCourse(source.getCourse().getName());
             }
         };
     }

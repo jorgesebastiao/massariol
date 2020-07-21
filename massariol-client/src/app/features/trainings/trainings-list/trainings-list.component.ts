@@ -29,10 +29,11 @@ export class TrainingsListComponent implements OnInit {
 
     columns = [
         { prop: 'id', name: 'ID' },
+        { prop: 'student', name: 'Aluno' },
+        { prop: 'course', name: 'Curso' },
+        { prop: 'company', name: 'Empresa' },
         { prop: 'startDate', name: 'Inico' },
-        { prop: 'finishDate', name: 'Finalizado em' },
-        { prop: 'expirationDate', name: 'Validade' },
-        { prop: 'realizationDate', name: 'Realizado em' }
+        { prop: 'finishDate', name: 'Finalizado em' }
     ];
 
     messages: any = {
