@@ -63,7 +63,7 @@
           </ng-select>
         </app-input-container>
 
-        <app-input-container *ngIf="signatureForm.get('type').value === '1'" label="Supervisor">
+        <app-input-container *ngIf="signatureForm.get('type').value === '1'" label="Responsável técnico">
           <ng-select
             #select
             [items]="supervisors | async"
@@ -71,10 +71,10 @@
             bindLabel="name"
             bindValue="id"
             [hideSelected]="true"
-            placeholder="Selecionar instrutor"
+            placeholder="Selecionar responsável técnico"
             loadingText="Carregando"
             notFoundText="Não há dados para exibição"
-            typeToSearchText="Pesquisar supervisor por nome/CPF"
+            typeToSearchText="Pesquisar responsável técnico por nome/CPF"
             [typeahead]="supervisorInput"
             formControlName="entityId">
             <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
