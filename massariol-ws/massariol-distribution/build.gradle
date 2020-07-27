@@ -35,6 +35,7 @@ dependencies {
     compile group: "io.springfox", name: 'springfox-swagger2', version: "${springfoxVersion}"
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: "${springfoxVersion}"
     compile group: 'io.springfox', name: 'springfox-bean-validators', version: "${springfoxVersion}"
+    compile project(':massariol-infrastructure')
     compile project(':massariol-application')
     compile project(':massariol-security')
     annotationProcessor ('org.springframework.boot:spring-boot-configuration-processor')
