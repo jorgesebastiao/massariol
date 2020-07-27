@@ -22,6 +22,10 @@ public class StudentCommandMapper {
                 skip(destination.getCreationDate());
                 skip(destination.getLastModification());
                 skip(destination.getPerson());
+                map().getPerson().setCpf(source.getCpf());
+                map().getPerson().setName(source.getName());
+                map().getPerson().setEmail(source.getEmail());
+                map().getPerson().setCellPhone(source.getCellPhone());
                 skip(destination.getBusinessStudents());
             }
         };
@@ -33,6 +37,9 @@ public class StudentCommandMapper {
                 skip(destination.getCreationDate());
                 skip(destination.getLastModification());
                 skip(destination.getPerson());
+                map().getPerson().setEmail(source.getEmail());
+                map().getPerson().setName(source.getName());
+                map().getPerson().setCellPhone(source.getCellPhone());
                 skip(destination.getBusinessStudents());
             }
         };
