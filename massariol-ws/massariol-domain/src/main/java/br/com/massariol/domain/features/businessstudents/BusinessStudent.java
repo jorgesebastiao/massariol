@@ -1,6 +1,6 @@
 package br.com.massariol.domain.features.businessstudents;
 
-import br.com.massariol.domain.common.EntityBaseImpl;
+import br.com.massariol.domain.common.EntityBase;
 import br.com.massariol.domain.features.companies.Company;
 import br.com.massariol.domain.features.students.Student;
 import br.com.massariol.domain.features.trainings.Training;
@@ -17,7 +17,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity(name = "businessStudents")
-public class BusinessStudent extends EntityBaseImpl<Long> {
+public class BusinessStudent extends EntityBase<Long> {
     @ManyToOne
     @JoinColumn(name = "companyId", referencedColumnName = "id")
     private Company company;

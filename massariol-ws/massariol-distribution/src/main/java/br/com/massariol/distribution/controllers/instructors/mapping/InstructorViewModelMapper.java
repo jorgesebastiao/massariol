@@ -19,7 +19,10 @@ public class InstructorViewModelMapper  {
      static PropertyMap<Instructor, InstructorResumeViewModel> instructorInstructorResumeViewModelPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-
+                map().setCellPhone(source.getPerson().getCellPhone());
+                map().setCpf(source.getPerson().getCpf());
+                map().setEmail(source.getPerson().getEmail());
+                map().setName(source.getPerson().getName());
             }
         };
     }
@@ -27,7 +30,10 @@ public class InstructorViewModelMapper  {
     static PropertyMap<Instructor, InstructorDetailViewModel> instructorInstructorDetailViewModelPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-
+                map().setCellPhone(source.getPerson().getCellPhone());
+                map().setCpf(source.getPerson().getCpf());
+                map().setEmail(source.getPerson().getEmail());
+                map().setName(source.getPerson().getName());
             }
         };
     }

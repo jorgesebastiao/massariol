@@ -16,8 +16,8 @@ public class BusinessStudentViewModelMapper {
         return new PropertyMap<>() {
             protected void configure() {
                 map().setStudentId(source.getStudent().getId());
-                map().setStudentCpf(source.getStudent().getCpf());
-                map().setStudentName(source.getStudent().getName());
+                map().setStudentCpf(source.getStudent().getPerson().getCpf());
+                map().setStudentName(source.getStudent().getPerson().getName());
                 map().setStudentOffice(source.getStudent().getOffice());
             }
         };

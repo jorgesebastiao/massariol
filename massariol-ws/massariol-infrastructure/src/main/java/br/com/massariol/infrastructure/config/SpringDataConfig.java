@@ -31,6 +31,8 @@ public class SpringDataConfig {
     private String driver;
     @Value(value = "${spring.datasource.url}")
     private String url;
+    @Value(value = "${spring.jpa.show-sql}")
+    private boolean showSql;
 
     @Bean(name = "massariolEntityManager")
     public EntityManager entityManager() {
@@ -40,8 +42,8 @@ public class SpringDataConfig {
     @Bean
     public HibernateJpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        adapter.setShowSql(true);
-        adapter.setGenerateDdl(true);
+        adapter.setShowSql(showSql);
+        adapter.setGenerateDdl(false);
         return adapter;
     }
 

@@ -18,7 +18,10 @@ public class SupervisorViewModelMapper {
     static PropertyMap<Supervisor, SupervisorResumeViewModel> supervisorSupervisorResumeViewModelPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-
+                map().setCellPhone(source.getPerson().getCellPhone());
+                map().setCpf(source.getPerson().getCpf());
+                map().setEmail(source.getPerson().getEmail());
+                map().setName(source.getPerson().getName());
             }
         };
     }
@@ -26,7 +29,10 @@ public class SupervisorViewModelMapper {
     static PropertyMap<Supervisor, SupervisorDetailViewModel> supervisorSupervisorDetailViewModelPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-
+                map().setCellPhone(source.getPerson().getCellPhone());
+                map().setCpf(source.getPerson().getCpf());
+                map().setEmail(source.getPerson().getEmail());
+                map().setName(source.getPerson().getName());
             }
         };
     }

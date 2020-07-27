@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface SupervisorRepository  extends RepositoryBase<Supervisor, Long> {
 
-    boolean existsByCpf(String cpf);
+    boolean existsByPersonCpf(String cpf);
 
-    Optional<Supervisor> findByCpf(String cpf);
+    Optional<Supervisor> findByPersonCpf(String cpf);
 }

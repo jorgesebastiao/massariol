@@ -1,6 +1,6 @@
 package br.com.massariol.domain.features.companies;
 
-import br.com.massariol.domain.common.EntityBaseImpl;
+import br.com.massariol.domain.common.EntityBase;
 import br.com.massariol.domain.features.businessstudents.BusinessStudent;
 import br.com.massariol.domain.features.users.User;
 import lombok.Data;
@@ -14,7 +14,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity(name = "companies")
-public class Company extends EntityBaseImpl<Long> {
+public class Company extends EntityBase<Long> {
     private String cnpj;
     private String corporateName;
     private String tradeName;

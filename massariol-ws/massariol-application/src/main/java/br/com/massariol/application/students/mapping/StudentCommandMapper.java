@@ -15,15 +15,18 @@ public class StudentCommandMapper {
         modelMapper.addMappings(studentUpdateCommandStudentPropertyMap());
     }
 
-     static PropertyMap<StudentCreateCommand, Student> studentCreateCommandStudentPropertyMap() {
+    static PropertyMap<StudentCreateCommand, Student> studentCreateCommandStudentPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-                skip( destination.getId());
-                skip( destination.getCreationDate());
-                skip( destination.getLastModification());
-                skip( destination.getSignaturePicture());
-                skip( destination.getProfilePicture());
-                skip(destination.getBusinessstudents());
+                skip(destination.getId());
+                skip(destination.getCreationDate());
+                skip(destination.getLastModification());
+                skip(destination.getPerson());
+                map().getPerson().setCpf(source.getCpf());
+                map().getPerson().setName(source.getName());
+                map().getPerson().setEmail(source.getEmail());
+                map().getPerson().setCellPhone(source.getCellPhone());
+                skip(destination.getBusinessStudents());
             }
         };
     }
@@ -31,12 +34,13 @@ public class StudentCommandMapper {
     static PropertyMap<StudentUpdateCommand, Student> studentUpdateCommandStudentPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-                skip( destination.getCreationDate());
-                skip( destination.getLastModification());
-                skip( destination.getSignaturePicture());
-                skip( destination.getProfilePicture());
-                skip( destination.getCpf());
-                skip(destination.getBusinessstudents());
+                skip(destination.getCreationDate());
+                skip(destination.getLastModification());
+                skip(destination.getPerson());
+                map().getPerson().setEmail(source.getEmail());
+                map().getPerson().setName(source.getName());
+                map().getPerson().setCellPhone(source.getCellPhone());
+                skip(destination.getBusinessStudents());
             }
         };
     }

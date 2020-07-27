@@ -15,25 +15,31 @@ public class InstructorCommandMapper {
         modelMapper.addMappings(instructorUpdateCommandInstructorPropertyMap());
     }
 
-     static PropertyMap<InstructorCreateCommand, Instructor> instructorCreateCommandInstructorDtoPropertyMap() {
+    static PropertyMap<InstructorCreateCommand, Instructor> instructorCreateCommandInstructorDtoPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-                skip( destination.getId());
-                skip( destination.getCreationDate());
-                skip( destination.getLastModification());
-                skip( destination.getSignaturePicture());
+                skip(destination.getId());
+                skip(destination.getCreationDate());
+                skip(destination.getLastModification());
+                skip(destination.getPerson());
+                map().getPerson().setCpf(source.getCpf());
+                map().getPerson().setName(source.getName());
+                map().getPerson().setEmail(source.getEmail());
+                map().getPerson().setCellPhone(source.getCellPhone());
                 skip(destination.getTrainings());
             }
         };
     }
 
-     static PropertyMap<InstructorUpdateCommand, Instructor> instructorUpdateCommandInstructorPropertyMap() {
+    static PropertyMap<InstructorUpdateCommand, Instructor> instructorUpdateCommandInstructorPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-                skip( destination.getCreationDate());
-                skip( destination.getLastModification());
-                skip( destination.getSignaturePicture());
-                skip( destination.getCpf());
+                skip(destination.getCreationDate());
+                skip(destination.getLastModification());
+                skip(destination.getPerson());
+                map().getPerson().setEmail(source.getEmail());
+                map().getPerson().setName(source.getName());
+                map().getPerson().setCellPhone(source.getCellPhone());
                 skip(destination.getTrainings());
             }
         };

@@ -1,6 +1,6 @@
 package br.com.massariol.domain.features.users;
 
-import br.com.massariol.domain.common.EntityBaseImpl;
+import br.com.massariol.domain.common.EntityBase;
 import br.com.massariol.domain.features.companies.Company;
 import br.com.massariol.domain.features.permissions.Permission;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity(name = "users")
-public class User extends EntityBaseImpl<Long> {
+public class User extends EntityBase<Long> {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

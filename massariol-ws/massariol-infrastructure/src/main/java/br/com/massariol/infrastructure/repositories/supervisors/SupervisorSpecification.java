@@ -6,8 +6,9 @@ import org.springframework.data.jpa.domain.Specification;
 public class SupervisorSpecification {
     public static Specification<Supervisor> filter(String filter) {
         return (root, query, builder) -> {
-            var nameFilter = builder.like(root.get("name"), "%" + filter + "%");
-            var cpfFilter = builder.like(root.get("cpf"), "%" + filter + "%");
+            var personJoin = root.join("person");
+            var nameFilter = builder.like(personJoin.get("name"), "%" + filter + "%");
+            var cpfFilter = builder.like(personJoin.get("cpf"), "%" + filter + "%");
             return builder.or(nameFilter, cpfFilter);
         };
     }

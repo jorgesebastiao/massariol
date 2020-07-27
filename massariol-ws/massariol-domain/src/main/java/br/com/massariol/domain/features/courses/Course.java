@@ -1,6 +1,6 @@
 package br.com.massariol.domain.features.courses;
 
-import br.com.massariol.domain.common.EntityBaseImpl;
+import br.com.massariol.domain.common.EntityBase;
 import br.com.massariol.domain.features.trainings.Training;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity(name = "courses")
-public class Course extends EntityBaseImpl<Long> {
+public class Course extends EntityBase<Long> {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

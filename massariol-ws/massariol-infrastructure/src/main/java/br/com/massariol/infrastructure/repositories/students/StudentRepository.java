@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface StudentRepository extends RepositoryBase<Student, Long> {
 
-    boolean existsByCpf(String cpf);
+    boolean existsByPersonCpf(String cpf);
 
-    Optional<Student> findByCpf(String cpf);
+    Optional<Student> findByPersonCpf(String cpf);
 }
