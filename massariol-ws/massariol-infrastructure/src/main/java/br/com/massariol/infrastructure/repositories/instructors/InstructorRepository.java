@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface InstructorRepository  extends RepositoryBase<Instructor, Long> {
 
-    boolean existsByCpf(String cpf);
+    boolean existsByPersonCpf(String cpf);
 
-    Optional<Instructor> findByCpf(String cpf);
+    Optional<Instructor> findByPersonCpf(String cpf);
 }

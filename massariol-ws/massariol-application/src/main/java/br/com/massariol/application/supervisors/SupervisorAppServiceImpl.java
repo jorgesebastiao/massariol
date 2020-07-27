@@ -31,14 +31,14 @@ public class SupervisorAppServiceImpl implements SupervisorAppService {
     }
 
     public Supervisor findByCpf(String cpf) {
-        return supervisorRepository.findByCpf(cpf)
+        return supervisorRepository.findByPersonCpf(cpf)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
 
     public Long add(SupervisorCreateCommand supervisorCreateCommand) {
         var supervisor = modelMapper.map(supervisorCreateCommand, Supervisor.class);
 
-        if(supervisorRepository.existsByCpf(supervisor.getCpf()))
+        if(supervisorRepository.existsByPersonCpf(supervisor.getPerson().getCpf()))
             throw  new ExceptionCpfInUse();
 
         supervisorRepository.save(supervisor);
@@ -58,7 +58,7 @@ public class SupervisorAppServiceImpl implements SupervisorAppService {
         var supervisorDatabase = supervisorRepository.findById(supervisorId)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
-        supervisorDatabase.setSignaturePicture(signature.split(",")[1].getBytes());
+        supervisorDatabase.getPerson().setSignaturePicture(signature.split(",")[1].getBytes());
         supervisorRepository.save(supervisorDatabase);
     }
 }

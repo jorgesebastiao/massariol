@@ -40,7 +40,7 @@ public class TrainingViewModelMapper {
         return new PropertyMap<>() {
             protected void configure() {
                 map().setCompany(source.getBusinessStudent().getCompany().getCorporateName());
-                map().setStudent(source.getBusinessStudent().getStudent().getName());
+                map().setStudent(source.getBusinessStudent().getStudent().getPerson().getName());
                 map().setCourse(source.getCourse().getName());
             }
         };
@@ -52,7 +52,9 @@ public class TrainingViewModelMapper {
                 map().setStudentId(source.getBusinessStudent().getStudent().getId());
                 map().setCompanyId(source.getBusinessStudent().getCompany().getId());
                 map().setInstructorId(source.getInstructor().getId());
+                map(source.getInstructor(), destination.getInstructor());
                 map().setSupervisorId(source.getSupervisor().getId());
+                map(source.getSupervisor(), destination.getSupervisor());
                 map().setCourseId(source.getCourse().getId());
                 map(source.getBusinessStudent().getCompany(), destination.getCompany());
                 map(source.getBusinessStudent().getStudent(), destination.getStudent());
@@ -71,7 +73,8 @@ public class TrainingViewModelMapper {
     static PropertyMap<Instructor, TrainingInstructorDetailViewModel> instructorTrainingInstructorDetailViewModelPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-
+                map().setName(source.getPerson().getName());
+                map().setCpf(source.getPerson().getCpf());
             }
         };
     }
@@ -79,7 +82,8 @@ public class TrainingViewModelMapper {
     static PropertyMap<Supervisor, TrainingSupervisorDetailViewModel> supervisorTrainingSupervisorDetailViewModelPropertyMap() {
         return new PropertyMap<>() {
             protected void configure() {
-
+                map().setName(source.getPerson().getName());
+                map().setCpf(source.getPerson().getCpf());
             }
         };
     }
@@ -88,8 +92,8 @@ public class TrainingViewModelMapper {
         return new PropertyMap<>() {
             protected void configure() {
                 map().setId(source.getStudent().getId());
-                map().setName(source.getStudent().getName());
-                map().setCpf(source.getStudent().getCpf());
+                map().setName(source.getStudent().getPerson().getName());
+                map().setCpf(source.getStudent().getPerson().getCpf());
             }
         };
     }

@@ -32,14 +32,14 @@ public class StudentAppServiceImpl implements StudentAppService {
     }
 
     public Student findByCpf(String cpf) {
-        return studentRepository.findByCpf(cpf)
+        return studentRepository.findByPersonCpf(cpf)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
 
     public Long add(StudentCreateCommand studentCreateCommand) {
         var student = modelMapper.map(studentCreateCommand, Student.class);
 
-        if(studentRepository.existsByCpf(student.getCpf()))
+        if(studentRepository.existsByPersonCpf(student.getPerson().getCpf()))
             throw  new ExceptionCpfInUse();
 
         studentRepository.save(student);
@@ -59,7 +59,7 @@ public class StudentAppServiceImpl implements StudentAppService {
         var studentDatabase = studentRepository.findById(studentId)
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
-        studentDatabase.setSignaturePicture(signature.split(",")[1].getBytes());
+        studentDatabase.getPerson().setSignaturePicture(signature.split(",")[1].getBytes());
         studentRepository.save(studentDatabase);
     }
 }

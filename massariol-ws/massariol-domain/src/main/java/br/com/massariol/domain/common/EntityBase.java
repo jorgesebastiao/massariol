@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class EntityBaseImpl<T> {
+public abstract class EntityBase<T> {
 
     @EqualsAndHashCode.Include
     @Id
@@ -20,7 +20,7 @@ public abstract class EntityBaseImpl<T> {
     @Column(nullable = false)
     private LocalDateTime lastModification;
 
-    protected EntityBaseImpl() {
+    protected EntityBase() {
         creationDate = LocalDateTime.now();
         lastModification = LocalDateTime.now();
     }

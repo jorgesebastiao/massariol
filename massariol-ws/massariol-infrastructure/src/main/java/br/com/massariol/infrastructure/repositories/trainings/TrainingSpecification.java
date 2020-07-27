@@ -36,7 +36,8 @@ public class TrainingSpecification {
         return (root, query, builder) -> {
             var businessStudentJoin = root.join("businessStudent");
             var studentJoin = businessStudentJoin.join("student");
-            return builder.like(studentJoin.get("name"), "%" + filter + "%");
+            var personJoin = studentJoin.join("person");
+            return builder.like(personJoin.get("name"), "%" + filter + "%");
         };
     }
 

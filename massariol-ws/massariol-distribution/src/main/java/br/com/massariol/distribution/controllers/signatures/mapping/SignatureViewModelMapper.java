@@ -26,6 +26,8 @@ public class SignatureViewModelMapper {
             protected void configure() {
                 map().setEntityId(source.getId());
                 map().setType(SignatureType.INSTRUCTOR);
+                map().setCpf(source.getPerson().getCpf());
+                map().setName(source.getPerson().getName());
             }
         };
     }
@@ -35,6 +37,8 @@ public class SignatureViewModelMapper {
             protected void configure() {
                 map().setEntityId(source.getId());
                 map().setType(SignatureType.SUPERVISOR);
+                map().setCpf(source.getPerson().getCpf());
+                map().setName(source.getPerson().getName());
             }
         };
     }
@@ -44,6 +48,8 @@ public class SignatureViewModelMapper {
             protected void configure() {
                 map().setEntityId(source.getId());
                 map().setType(SignatureType.STUDENT);
+                map().setCpf(source.getPerson().getCpf());
+                map().setName(source.getPerson().getName());
             }
         };
     }

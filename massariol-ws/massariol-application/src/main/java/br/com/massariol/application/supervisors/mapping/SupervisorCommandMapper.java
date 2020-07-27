@@ -22,7 +22,7 @@ public class SupervisorCommandMapper {
                 skip( destination.getId());
                 skip( destination.getCreationDate());
                 skip( destination.getLastModification());
-                skip( destination.getSignaturePicture());
+                skip( destination.getPerson());
                 skip(destination.getTrainings());
             }
         };
@@ -33,8 +33,7 @@ public class SupervisorCommandMapper {
             protected void configure() {
                 skip( destination.getCreationDate());
                 skip( destination.getLastModification());
-                skip( destination.getSignaturePicture());
-                skip( destination.getCpf());
+                skip( destination.getPerson());
                 skip(destination.getTrainings());
             }
         };

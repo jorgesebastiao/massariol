@@ -1,6 +1,6 @@
 package br.com.massariol.domain.features.trainings;
 
-import br.com.massariol.domain.common.EntityBaseImpl;
+import br.com.massariol.domain.common.EntityBase;
 import br.com.massariol.domain.features.businessstudents.BusinessStudent;
 import br.com.massariol.domain.features.courses.Course;
 import br.com.massariol.domain.features.instructors.Instructor;
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity(name = "trainings")
-public class Training extends EntityBaseImpl<Long> {
+public class Training extends EntityBase<Long> {
     private LocalDate startDate;
     private LocalDate finishDate;
     private LocalDate expirationDate;
