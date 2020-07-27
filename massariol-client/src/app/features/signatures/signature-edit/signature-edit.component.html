@@ -7,7 +7,7 @@
 
     <div class="row">
       <div class="col-sm-12 col-md-12">
-        <app-input-container label="Autor da assinatura">
+        <app-input-container (change)="clearPerson()" label="Autor da assinatura">
           <select id="type"
                   class="form-control"
                   formControlName="type">

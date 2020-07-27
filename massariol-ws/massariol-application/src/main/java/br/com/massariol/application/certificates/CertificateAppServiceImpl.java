@@ -13,9 +13,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+
 import java.awt.*;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -56,11 +56,15 @@ public class CertificateAppServiceImpl implements CertificateAppService {
         return JasperExportManager.exportReportToPdf(jasperPrint);
     }
 
-    public void getFont() throws IOException, FontFormatException {
-        ClassLoader classLoader = getClass().getClassLoader();
-        Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(classLoader.getResourceAsStream("century_schoolbook.ttf")));
-        GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        graphicsEnvironment.registerFont(font);
+    public void getFont() {
+        try {
+            ClassLoader classLoader = getClass().getClassLoader();
+            Font font = Font.createFont(Font.TRUETYPE_FONT, Objects.requireNonNull(classLoader.getResourceAsStream("/fonts/century_schoolbook.ttf")));
+            GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            graphicsEnvironment.registerFont(font);
+        } catch (Exception ex) {
+            System.out.println("Não foi possivel carregar a font defautl" + ex.getCause());
+        }
     }
 
     private String getImagePath() {
