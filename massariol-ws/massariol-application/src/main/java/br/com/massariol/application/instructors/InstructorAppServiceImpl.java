@@ -13,6 +13,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class InstructorAppServiceImpl implements InstructorAppService {
     private final ModelMapper modelMapper;
@@ -39,6 +41,7 @@ public class InstructorAppServiceImpl implements InstructorAppService {
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
     }
 
+    @Transactional
     public Long add(InstructorCreateCommand instructorCreateCommand) {
         var instructor = modelMapper.map(instructorCreateCommand, Instructor.class);
 
@@ -52,6 +55,7 @@ public class InstructorAppServiceImpl implements InstructorAppService {
         return  instructor.getId();
     }
 
+    @Transactional
     public  void update(InstructorUpdateCommand instructorUpdateCommand){
         var instructorDatabase = instructorRepository.findById(instructorUpdateCommand.getId())
                                                      .orElseThrow(() -> new EmptyResultDataAccessException(1));
