@@ -53,6 +53,11 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ecr-massariol-repo
         IMAGE_TAG: ${{ github.sha }}
+        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
+        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
+        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
+        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
+        SPRING_PROFILES_ACTIVE: prod
       run: |
         # Build a docker container and
         # push it to ECR so that it can
@@ -66,6 +71,12 @@ jobs:
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
+      env:
+        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
+        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
+        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
+        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
+        SPRING_PROFILES_ACTIVE: prod
       with:
         task-definition: task-definition.json
         container-name: massariol
