@@ -17,7 +17,28 @@
       "command": null,
       "linuxParameters": null,
       "cpu": 0,
-      "environment": [],
+      "environment": [
+        {
+          "name": "JDBC_DATABASE_NAME",
+          "value": "massarioltrein01"
+        },
+        {
+          "name": "JDBC_DATABASE_PASSWORD",
+          "value": "Massariol405525"
+        },
+        {
+          "name": "JDBC_DATABASE_URL",
+          "value": "jdbc:mysql://mysql.massarioltreinamentos.com.br/massarioltrein01?createDatabaseIfNotExist=true&serverTimezone=UTC"
+        },
+        {
+          "name": "JDBC_DATABASE_USERNAME",
+          "value": "massarioltrein01"
+        },
+        {
+          "name": "SPRING_PROFILES_ACTIVE",
+          "value": "prod"
+        }
+      ],
       "resourceRequirements": null,
       "ulimits": null,
       "dnsServers": null,
