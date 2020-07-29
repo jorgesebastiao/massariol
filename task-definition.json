@@ -20,19 +20,19 @@
       "environment": [
         {
           "name": "JDBC_DATABASE_NAME",
-          "value": "massarioltrein01"
+          "value": "JDBC_DATABASE_NAME_VALUE"
         },
         {
           "name": "JDBC_DATABASE_PASSWORD",
-          "value": "Massariol405525"
+          "value": "JDBC_DATABASE_PASSWORD_VALUE"
         },
         {
           "name": "JDBC_DATABASE_URL",
-          "value": "jdbc:mysql://mysql.massarioltreinamentos.com.br/massarioltrein01?createDatabaseIfNotExist=true&serverTimezone=UTC"
+          "value": "JDBC_DATABASE_URL_VALUE"
         },
         {
           "name": "JDBC_DATABASE_USERNAME",
-          "value": "massarioltrein01"
+          "value": "JDBC_DATABASE_USERNAME_VALUE"
         },
         {
           "name": "SPRING_PROFILES_ACTIVE",
