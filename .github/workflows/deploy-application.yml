@@ -40,7 +40,7 @@ jobs:
       env:       
         JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
       with:
-        find: "JDBC_DATABASE_URL"
+        find: "JDBC_DATABASE_URL_VALUE"
         replace: $JDBC_DATABASE_URL
         include: "task-definition.json"
       
@@ -49,7 +49,7 @@ jobs:
       env:       
         JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}}
       with:
-        find: "JDBC_DATABASE_USERNAME"
+        find: "JDBC_DATABASE_USERNAME_VALUE"
         replace: $JDBC_DATABASE_USERNAME
         include: "task-definition.json"
            
@@ -58,7 +58,7 @@ jobs:
       env:       
         JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
       with:
-        find: "JDBC_DATABASE_PASSWORD"
+        find: "JDBC_DATABASE_PASSWORD_VALUE"
         replace: $JDBC_DATABASE_PASSWORD
         include: "task-definition.json"
     
@@ -67,7 +67,7 @@ jobs:
       env:       
         JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
       with:
-        find: "JDBC_DATABASE_NAME"
+        find: "JDBC_DATABASE_NAME_VALUE"
         replace: $JDBC_DATABASE_NAME
         include: "task-definition.json"
         
