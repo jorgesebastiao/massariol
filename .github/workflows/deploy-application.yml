@@ -62,9 +62,9 @@ jobs:
       working-directory: ${{env.back-end}}
         
 
-    - name: Fill in the new image ID in the Amazon ECS task definition
+    - name: Amazon ECS "Render Task Definition" Action for GitHub Actions (+ Environment Overwritten)
       id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      uses: sibevin/amazon-ecs-render-task-definition@v1.0.8.2
       env:
         JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
         JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
