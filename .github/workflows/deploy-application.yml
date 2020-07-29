@@ -34,16 +34,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       working-directory: ${{env.back-end}}
-
-    - name: Replace env vars in file
-      uses: falnyr/replace-env-vars-action@v1.2.1
-      env:       
-        JDBC_DATABASE_URL_VALUE: ${{secrets.JDBC_DATABASE_URL}}
-        JDBC_DATABASE_USERNAME_VALUE: ${{secrets.JDBC_DATABASE_USERNAME}} 
-        JDBC_DATABASE_PASSWORD_VALUE: ${{secrets.JDBC_DATABASE_PASSWORD}}
-        JDBC_DATABASE_NAME_VALUE: ${{secrets.JDBC_DATABASE_NAME}}
-      with:
-        filename: "task-definition.json"
               
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
@@ -85,6 +75,7 @@ jobs:
         task-definition: task-definition.json
         container-name: massariol
         image: ${{ steps.build-image.outputs.image }}
+        overwritten-envs: JDBC_DATABASE_URL,JDBC_DATABASE_USERNAME,JDBC_DATABASE_PASSWORD,JDBC_DATABASE_NAME,SPRING_PROFILES_ACTIVE
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
