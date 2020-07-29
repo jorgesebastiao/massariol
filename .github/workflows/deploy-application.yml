@@ -35,7 +35,42 @@ jobs:
       run: ./gradlew build
       working-directory: ${{env.back-end}}
 
-
+    - name: Find and Replace
+      uses: jacobtomlinson/gha-find-replace@0.1.2
+      env:       
+        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
+      with:
+        find: "JDBC_DATABASE_URL_VALUE"
+        replace: $JDBC_DATABASE_URL
+        include: "task-definition.json"
+      
+    - name: Find and Replace
+      uses: jacobtomlinson/gha-find-replace@0.1.2
+      env:       
+        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}}
+      with:
+        find: "JDBC_DATABASE_USERNAME_VALUE"
+        replace: $JDBC_DATABASE_USERNAME
+        include: "task-definition.json"
+           
+    - name: Find and Replace
+      uses: jacobtomlinson/gha-find-replace@0.1.2
+      env:       
+        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
+      with:
+        find: "JDBC_DATABASE_PASSWORD_VALUE"
+        replace: $JDBC_DATABASE_PASSWORD
+        include: "task-definition.json"
+    
+    - name: Find and Replace
+      uses: jacobtomlinson/gha-find-replace@0.1.2
+      env:       
+        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
+      with:
+        find: "JDBC_DATABASE_NAME_VALUE"
+        replace: $JDBC_DATABASE_NAME
+        include: "task-definition.json"
+        
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -46,7 +81,7 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-
+    
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
