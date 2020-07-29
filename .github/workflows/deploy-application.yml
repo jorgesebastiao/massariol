@@ -35,42 +35,16 @@ jobs:
       run: ./gradlew build
       working-directory: ${{env.back-end}}
 
-    - name: Find and Replace
-      uses: jacobtomlinson/gha-find-replace@0.1.2
+    - name: Replace env vars in file
+      uses: falnyr/replace-env-vars-action@v1.2.1
       env:       
-        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
+        JDBC_DATABASE_URL_VALUE: ${{secrets.JDBC_DATABASE_URL}}
+        JDBC_DATABASE_USERNAME_VALUE: ${{secrets.JDBC_DATABASE_USERNAME}} 
+        JDBC_DATABASE_PASSWORD_VALUE: ${{secrets.JDBC_DATABASE_PASSWORD}}
+        JDBC_DATABASE_NAME_VALUE: ${{secrets.JDBC_DATABASE_NAME}}
       with:
-        find: "JDBC_DATABASE_URL_VALUE"
-        replace: $JDBC_DATABASE_URL
-        include: "task-definition.json"
-      
-    - name: Find and Replace
-      uses: jacobtomlinson/gha-find-replace@0.1.2
-      env:       
-        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}}
-      with:
-        find: "JDBC_DATABASE_USERNAME_VALUE"
-        replace: $JDBC_DATABASE_USERNAME
-        include: "task-definition.json"
-           
-    - name: Find and Replace
-      uses: jacobtomlinson/gha-find-replace@0.1.2
-      env:       
-        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
-      with:
-        find: "JDBC_DATABASE_PASSWORD_VALUE"
-        replace: $JDBC_DATABASE_PASSWORD
-        include: "task-definition.json"
-    
-    - name: Find and Replace
-      uses: jacobtomlinson/gha-find-replace@0.1.2
-      env:       
-        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
-      with:
-        find: "JDBC_DATABASE_NAME_VALUE"
-        replace: $JDBC_DATABASE_NAME
-        include: "task-definition.json"
-        
+        filename: "task-definition.json"
+              
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -88,11 +62,6 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ecr-massariol-repo
         IMAGE_TAG: ${{ github.sha }}
-        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
-        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
-        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
-        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
-        SPRING_PROFILES_ACTIVE: prod
       run: |
         # Build a docker container and
         # push it to ECR so that it can
