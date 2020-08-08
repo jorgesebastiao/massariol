@@ -1,19 +1,20 @@
-import {LOCALE_ID, NgModule, Optional, SkipSelf} from '@angular/core';
-import {CommonModule, registerLocaleData} from '@angular/common';
-import {RouterModule} from '@angular/router';
+import { LOCALE_ID, NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
 
-import {FormService} from '../shared/services/form.service';
-import {NotAuthorizedComponent} from './not-authorized/not-authorized.component';
-import { HttpClientModule} from '@angular/common/http';
-import {ToastrModule, ToastrService} from 'ngx-toastr';
-import {ToastService} from '../shared/services/toast.service';
-import {CepService} from '../shared/services/cep.service';
+import { FormService } from '../shared/services/form.service';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastService } from '../shared/services/toast.service';
+import { CepService } from '../shared/services/cep.service';
 
 import localePt from '@angular/common/locales/pt';
-import {BsModalService} from 'ngx-bootstrap/modal';
-import {NgxLoadingModule} from 'ngx-loading';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { NgxLoadingModule } from 'ngx-loading';
 import { LayoutModule } from './layout/layout.module';
 import { SecurityModule } from './security';
+import { ErrorHandlerService } from './services/error-handler.service';
 
 
 registerLocaleData(localePt);
@@ -41,7 +42,15 @@ registerLocaleData(localePt);
     ToastrService,
     ToastService,
     BsModalService,
-    {provide: LOCALE_ID, useValue: 'pt-BR'}]
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+    {
+      provide: ErrorHandler,
+      useClass: ErrorHandlerService
+    },
+  ]
 })
 
 export class CoreModule {

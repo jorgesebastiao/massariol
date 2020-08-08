@@ -9,7 +9,6 @@ import { CompanyUserCreateCommand, CompanyUserUpdateCommand} from './user.model'
 })
 export class UserService {
 
-
   apiUrl: string;
 
   constructor(private http: AuthHttp) {

@@ -49,9 +49,9 @@ export class InstructorEditComponent implements OnInit {
         this.instructorService.put(instructorUpdateCommand)
             .subscribe(() => {
                 this.toastrService.success('Edição realizada com Sucesso!');
-                this.isLoading = false;
                 this.onClose.next(true);
                 this.bsModalRef.hide();
+                this.isLoading = false;
             }, error => {
               this.isLoading = false;
               const errorMessage = error.status == 400 ? error.error.message: 'Ocorreu erro ao processar a solicitação';
@@ -61,9 +61,9 @@ export class InstructorEditComponent implements OnInit {
         const instructorCreateCommand: InstructorCreateCommand = this.instructorForm.value;
         this.instructorService.post(instructorCreateCommand).subscribe(() => {
           this.toastrService.success('Cadastro realizado com Sucesso!');
-          this.isLoading = false;
           this.onClose.next(true);
           this.bsModalRef.hide();
+          this.isLoading = false;
         }, error => {
           this.isLoading = false;
           const errorMessage = error.status == 400 ? error.error.message: 'Ocorreu erro ao processar a solicitação';
