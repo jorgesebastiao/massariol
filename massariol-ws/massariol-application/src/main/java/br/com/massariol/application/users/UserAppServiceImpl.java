@@ -13,6 +13,8 @@ import br.com.massariol.infrastructure.repositories.companies.CompanyRepository;
 import br.com.massariol.infrastructure.repositories.users.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -39,6 +41,9 @@ public class UserAppServiceImpl extends ApplicationServiceBaseImpl<User, Long> i
         this.modelMapper = modelMapper;
     }
 
+    public Page<User> findAll(Pageable pageable, String filter) {
+        return userRepository.findAll(pageable);
+    }
 
     public User getByCompanyId(Long companyId) {
         return userRepository.findByCompanyId(companyId)

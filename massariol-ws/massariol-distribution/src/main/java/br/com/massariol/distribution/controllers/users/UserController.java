@@ -5,9 +5,12 @@ import br.com.massariol.application.users.commands.CompanyUserCreateCommand;
 import br.com.massariol.application.users.commands.CompanyUserUpdateCommand;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
 import br.com.massariol.distribution.controllers.users.viewmodels.UserCompanyViewModel;
-import br.com.massariol.domain.features.users.User;
+import br.com.massariol.distribution.controllers.users.viewmodels.UserResumeViewModel;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,11 +32,17 @@ public class UserController extends ApiBaseController {
         this.userAppService = userAppService;
     }
 
+    @ApiOperation(value = "View a list of users", response = UserResumeViewModel.class)
+    @GetMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('read')")
+    public Page<UserResumeViewModel> getAll(@RequestParam(required = false, defaultValue = "") String filter, Pageable pageable) {
+        return handlePageResult(pageable, userAppService.findAll(pageable, filter), UserResumeViewModel.class);
+    }
+
     @GetMapping("/companies/{companyId}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('read')")
     public ResponseEntity<UserCompanyViewModel> getByCompanyId(@PathVariable Long companyId) {
-        User user = userAppService.getByCompanyId(companyId);
-        return ok(sourceToDestination(user, UserCompanyViewModel.class));
+        return ok(sourceToDestination(userAppService.getByCompanyId(companyId), UserCompanyViewModel.class));
     }
 
     @PostMapping
