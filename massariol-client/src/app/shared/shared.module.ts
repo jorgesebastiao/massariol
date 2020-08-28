@@ -12,6 +12,7 @@ import { ModalModule} from 'ngx-bootstrap/modal';
 import {ButtonsModule} from 'ngx-bootstrap/buttons';
 import {NgxLoadingModule} from 'ngx-loading';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ConfirmationService, ConfirmationComponent } from './confirmation';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CpfPipe,
     CnpjPipe,
     CellPhone,
-    MassariolRegistrationAndResearchComponent],
+    MassariolRegistrationAndResearchComponent,
+    ConfirmationComponent],
   exports: [InputComponent,
     NgxDatatableModule,
     NgxLoadingModule,
@@ -47,7 +49,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CellPhone,
     NgSelectModule,
     MassariolRegistrationAndResearchComponent,
-    CommonModule]
+    CommonModule],
+    providers:[
+      ConfirmationService
+    ]
 })
 export class SharedModule {
 }

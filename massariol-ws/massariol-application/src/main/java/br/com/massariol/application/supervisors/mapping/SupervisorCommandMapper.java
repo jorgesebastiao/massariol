@@ -37,7 +37,7 @@ public class SupervisorCommandMapper {
             protected void configure() {
                 skip( destination.getCreationDate());
                 skip( destination.getLastModification());
-                skip( destination.getPerson());
+                skip(destination.getPerson());
                 map().getPerson().setEmail(source.getEmail());
                 map().getPerson().setName(source.getName());
                 map().getPerson().setCellPhone(source.getCellPhone());

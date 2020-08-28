@@ -53,6 +53,11 @@ const routes: Routes = [
         path: 'trainings',
         loadChildren: 'app/features/trainings/trainings.module#TrainingsModule',
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'users',
+        loadChildren: 'app/features/users/users.module#UsersModule',
+        canActivate: [AuthGuard]
       }
     ]
   },
