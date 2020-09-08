@@ -34,8 +34,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       working-directory: ${{env.back-end}}
-
-
+              
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -46,15 +45,10 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-
+    
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
-        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
-        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
-        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
-        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
-        SPRING_PROFILES_ACTIVE: prod 
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ecr-massariol-repo
         IMAGE_TAG: ${{ github.sha }}
@@ -68,16 +62,29 @@ jobs:
       working-directory: ${{env.back-end}}
         
 
-    - name: Fill in the new image ID in the Amazon ECS task definition
+    - name: Amazon ECS "Render Task Definition" Action for GitHub Actions (+ Environment Overwritten)
       id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      uses: sibevin/amazon-ecs-render-task-definition@v1.0.8.2
+      env:
+        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
+        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
+        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
+        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
+        SPRING_PROFILES_ACTIVE: prod
       with:
         task-definition: task-definition.json
         container-name: massariol
         image: ${{ steps.build-image.outputs.image }}
+        overwritten-envs: JDBC_DATABASE_URL,JDBC_DATABASE_USERNAME,JDBC_DATABASE_PASSWORD,JDBC_DATABASE_NAME,SPRING_PROFILES_ACTIVE
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      env:
+        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
+        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
+        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
+        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
+        SPRING_PROFILES_ACTIVE: prod
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: massariol-app-service
