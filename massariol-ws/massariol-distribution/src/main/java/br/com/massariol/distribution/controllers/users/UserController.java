@@ -5,6 +5,7 @@ import br.com.massariol.application.users.commands.CompanyUserCreateCommand;
 import br.com.massariol.application.users.commands.CompanyUserUpdateCommand;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
 import br.com.massariol.distribution.controllers.users.viewmodels.UserCompanyViewModel;
+import br.com.massariol.distribution.controllers.users.viewmodels.UserDetailViewModel;
 import br.com.massariol.distribution.controllers.users.viewmodels.UserResumeViewModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,10 +40,11 @@ public class UserController extends ApiBaseController {
         return handlePageResult(pageable, userAppService.findAll(pageable, filter), UserResumeViewModel.class);
     }
 
-    @GetMapping("/companies/{companyId}")
+    @ApiOperation(value = "View a user by id", response = UserDetailViewModel.class)
+    @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('read')")
-    public ResponseEntity<UserCompanyViewModel> getByCompanyId(@PathVariable Long companyId) {
-        return ok(sourceToDestination(userAppService.getByCompanyId(companyId), UserCompanyViewModel.class));
+    public ResponseEntity<UserDetailViewModel> getById(@PathVariable Long id) {
+        return ok(sourceToDestination(userAppService.getById(id), UserDetailViewModel.class));
     }
 
     @PostMapping

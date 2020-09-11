@@ -35,6 +35,7 @@ import { ConfirmationService, ConfirmationComponent } from './confirmation';
     MassariolRegistrationAndResearchComponent,
     ConfirmationComponent],
   exports: [InputComponent,
+    RadioComponent,
     NgxDatatableModule,
     NgxLoadingModule,
     ButtonsModule,

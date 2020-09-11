@@ -8,6 +8,5 @@ import lombok.Setter;
 public class UserUpdateCommand {
     private Long id;
     private String email;
-    private String user;
-    private String password;
+    private String name;
 }

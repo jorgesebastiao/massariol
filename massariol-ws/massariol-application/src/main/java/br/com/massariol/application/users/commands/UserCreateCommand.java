@@ -7,7 +7,6 @@ import lombok.Setter;
 @Setter
 public class UserCreateCommand {
     private String email;
-    private String user;
-    private String password;
+    private String name;
 }
 

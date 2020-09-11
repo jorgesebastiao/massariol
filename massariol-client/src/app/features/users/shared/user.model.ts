@@ -8,21 +8,18 @@ export class User {
   public company?: Company;
 }
 
-export class CompanyUserCreateCommand {
+export class UserCreateCommand {
   public email: string;
   public name: string;
-  public password: string;
   public companyId: number;
-  constructor(user: any, companyId: number) {
-    this.email = user.email;
+  constructor(user: any) {
     this.name = user.name;
-    this.password = user.password;
-    this.companyId = companyId;
+    this.email = user.email;
+    this.companyId = user.companyId;
   }
 }
 
-
-export class CompanyUserUpdateCommand {
+export class UserUpdateCommand {
   public id: number;
   public email: string;
   public name: string;
