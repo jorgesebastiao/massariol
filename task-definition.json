@@ -17,7 +17,28 @@
       "command": null,
       "linuxParameters": null,
       "cpu": 0,
-      "environment": [],
+      "environment": [
+        {
+          "name": "JDBC_DATABASE_NAME",
+          "value": "JDBC_DATABASE_NAME_VALUE"
+        },
+        {
+          "name": "JDBC_DATABASE_PASSWORD",
+          "value": "JDBC_DATABASE_PASSWORD_VALUE"
+        },
+        {
+          "name": "JDBC_DATABASE_URL",
+          "value": "JDBC_DATABASE_URL_VALUE"
+        },
+        {
+          "name": "JDBC_DATABASE_USERNAME",
+          "value": "JDBC_DATABASE_USERNAME_VALUE"
+        },
+        {
+          "name": "SPRING_PROFILES_ACTIVE",
+          "value": "prod"
+        }
+      ],
       "resourceRequirements": null,
       "ulimits": null,
       "dnsServers": null,
