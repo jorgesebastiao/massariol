@@ -15,13 +15,15 @@ lastModification,
 active,
 email,
 name,
-password)
+password,
+type)
 values(1,
 '2019-11-26 00:36:53',
 '2019-11-26 00:36:53',
 1,
 'admin@massarioltreinamentos.com.br',
 'Massariol Treinamentos',
-'$2a$10$eJ1rJBNUJKGomoqdLvDrfugiuvJH824oYonZ2j98rtrgmZhAOBSb2');
+'$2a$10$eJ1rJBNUJKGomoqdLvDrfugiuvJH824oYonZ2j98rtrgmZhAOBSb2',
+0);
 
 insert into userPermissions(userId,permissionId) values(1,1);

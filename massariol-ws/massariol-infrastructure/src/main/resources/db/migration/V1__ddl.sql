@@ -26,6 +26,7 @@ CREATE TABLE users(
     email VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
+    type INT NOT NULL,
     companyId BIGINT,
     PRIMARY KEY (id),
 	FOREIGN KEY (companyId) REFERENCES companies(id)

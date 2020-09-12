@@ -3,6 +3,8 @@ package br.com.massariol.distribution.controllers.users;
 import br.com.massariol.application.users.UserAppService;
 import br.com.massariol.application.users.commands.CompanyUserCreateCommand;
 import br.com.massariol.application.users.commands.CompanyUserUpdateCommand;
+import br.com.massariol.application.users.commands.UserCreateCommand;
+import br.com.massariol.application.users.commands.UserUpdateCommand;
 import br.com.massariol.distribution.controllers.base.ApiBaseController;
 import br.com.massariol.distribution.controllers.users.viewmodels.UserCompanyViewModel;
 import br.com.massariol.distribution.controllers.users.viewmodels.UserDetailViewModel;
@@ -49,15 +51,15 @@ public class UserController extends ApiBaseController {
 
     @PostMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('write')")
-    public ResponseEntity postUserCompany(@RequestBody CompanyUserCreateCommand companyUserCreateCommand ) {
-        userAppService.createUserCompany(companyUserCreateCommand);
+    public ResponseEntity post(@RequestBody UserCreateCommand command) {
+       // userAppService.createUserCompany(command);
         return status(HttpStatus.CREATED).build();
     }
 
     @PutMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('write')")
-    public ResponseEntity put(@RequestBody CompanyUserUpdateCommand companyUserUpdateCommand) {
-        userAppService.updateUserCompany(companyUserUpdateCommand);
+    public ResponseEntity put(@RequestBody UserUpdateCommand command) {
+       // userAppService.updateUserCompany(command);
         return status(HttpStatus.CREATED).build();
     }
 }

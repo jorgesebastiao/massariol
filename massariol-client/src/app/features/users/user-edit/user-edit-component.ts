@@ -5,7 +5,7 @@ import { FormService } from '../../../shared/services/form.service';
 import { Subject, Observable, of, concat } from 'rxjs';
 import { UserService } from '../shared/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { UserCreateCommand } from '../shared/user.model';
+import { UserCreateCommand, UserUpdateCommand } from '../shared/user.model';
 import { RadioOption } from '../../../shared/radio/radio-option.model';
 import { Page } from '../../../shared/models';
 import { distinctUntilChanged, tap, switchMap, map, catchError } from 'rxjs/operators';
@@ -23,11 +23,6 @@ export class UserEditComponent implements OnInit {
   userId: number;
   isLoading: boolean;
   isEdit: boolean;
-
-  typeOptions: RadioOption[] = [
-    { label: 'Massariol', value: 1 },
-    { label: 'Empresa', value: 2 }
-  ]
 
   companies: Observable<any[]>;
   companyLoading = false;
@@ -63,13 +58,14 @@ export class UserEditComponent implements OnInit {
       name: this.formBuilder.control('', [Validators.required]),
       email: this.formBuilder.control('', [Validators.email, Validators.required]),
       type: this.formBuilder.control('', [Validators.required]),
+      resendPassword: this.formBuilder.control(false),
       profile: this.formBuilder.control('', [Validators.required]),
       companyId: this.formBuilder.control('',)
     });
   }
 
   initSelect() {
-    this.userForm.controls['type'].setValue(1);
+    this.userForm.controls['type'].setValue('MASSARIOL');
   }
 
   getUser() {
@@ -87,8 +83,8 @@ export class UserEditComponent implements OnInit {
     if (this.userForm.valid) {
       this.isLoading = true;
       if (this.isEdit) {
-        /*   const trainingUpdateCommand: TrainingUpdateCommand = new TrainingUpdateCommand(this.trainingForm.value, this.trainingId);
-           this.trainingService.put(trainingUpdateCommand)
+         const userUpdateCommand: UserUpdateCommand = new UserUpdateCommand(this.userForm.value, this.userId);
+           this.userService.put(userUpdateCommand)
                .subscribe(() => {
                    this.toastrService.success('Edição realizada com Sucesso!');
                    this.isLoading = false;
@@ -98,7 +94,7 @@ export class UserEditComponent implements OnInit {
                    this.isLoading = false;
                    const errorMessage = error.status == 400 ? error.error.message : 'Ocorreu erro ao processar a solicitação';
                    this.toastrService.error(errorMessage);
-               });*/
+               });
       } else {
         const userCreateCommand: UserCreateCommand = this.userForm.value;
         this.userService.post(userCreateCommand).subscribe(() => {
