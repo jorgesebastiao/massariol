@@ -1,4 +1,4 @@
 # Introduction 
-TODO: Projeto para a gestão de treinamentos. 
+TODO: Projeto para a gestão de Treinamentos. 
 
 
