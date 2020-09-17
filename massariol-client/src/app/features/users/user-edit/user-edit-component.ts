@@ -6,7 +6,6 @@ import { Subject, Observable, of, concat } from 'rxjs';
 import { UserService } from '../shared/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserCreateCommand, UserUpdateCommand } from '../shared/user.model';
-import { RadioOption } from '../../../shared/radio/radio-option.model';
 import { Page } from '../../../shared/models';
 import { distinctUntilChanged, tap, switchMap, map, catchError } from 'rxjs/operators';
 import { CompanyService } from '../../companies/shared/company.service';

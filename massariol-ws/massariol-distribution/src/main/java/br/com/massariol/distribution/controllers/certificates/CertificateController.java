@@ -26,10 +26,19 @@ public class CertificateController extends ApiBaseController {
         this.certificateAppService = certificateAppService;
     }
 
+    @ApiOperation(value = "return a certificate by trainingId")
+    @GetMapping("training/{trainingId}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('read')")
+    public ResponseEntity<byte[]> getCertificateTraining(@PathVariable Long trainingId) throws Exception{
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE)
+                .body(certificateAppService.getCertificate(trainingId));
+    }
+
     @ApiOperation(value = "return a certificate by trainingId and businessStudentId")
     @GetMapping("training/{trainingId}/business-student/{businessStudentId}")
     @PreAuthorize("hasAuthority('ROLE_COMPANY_CERTIFICATE') and #oauth2.hasScope('read')")
-    public ResponseEntity<byte[]> getCertificates(@PathVariable Long trainingId, @PathVariable Long businessStudentId) throws Exception{
+    public ResponseEntity<byte[]> getCertificateBusinessStudent(@PathVariable Long trainingId, @PathVariable Long businessStudentId) throws Exception{
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_PDF_VALUE)
                 .body(certificateAppService.getCertificate(trainingId, businessStudentId, getCompanyId()));

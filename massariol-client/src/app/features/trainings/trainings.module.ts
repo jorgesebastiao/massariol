@@ -5,6 +5,7 @@ import { TrainingSharedModule } from './shared/training-shared.module';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 import { TrainingEditComponent } from './training-edit/training-edit.component';
 import { StudentSharedModule } from '../students/shared/student-shared.module';
+import { CertificateSharedModule } from '../certificates/shared/certificate-shared.module';
 
 @NgModule({
     declarations: [TrainingsListComponent, TrainingEditComponent],
@@ -12,6 +13,7 @@ import { StudentSharedModule } from '../students/shared/student-shared.module';
       SharedModule,
       TrainingSharedModule,
       TrainingsRoutingModule,
+      CertificateSharedModule,
       StudentSharedModule,
     ],
     entryComponents: [ TrainingEditComponent ]

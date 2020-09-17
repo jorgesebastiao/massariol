@@ -1,6 +1,7 @@
 package br.com.massariol.application.certificates;
 
 import br.com.massariol.application.certificates.dtos.CertificateDto;
+import br.com.massariol.domain.features.trainings.Training;
 import br.com.massariol.infrastructure.repositories.trainings.TrainingRepository;
 import br.com.massariol.infrastructure.repositories.trainings.TrainingSpecification;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -13,9 +14,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-
 import java.awt.*;
-import java.io.*;
+import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -30,11 +30,20 @@ public class CertificateAppServiceImpl implements CertificateAppService {
         this.modelMapper = modelMapper;
     }
 
-    @Override
+    public byte[] getCertificate(Long trainingId) throws Exception {
+        var training = trainingRepository.findById(trainingId)
+                .orElseThrow(() -> new EmptyResultDataAccessException(1));
+        return GenerateCertificate(training);
+    }
+
     public byte[] getCertificate(Long trainingId, Long businessStudentId, Long companyId) throws Exception {
         var training = trainingRepository.findOne(TrainingSpecification.findByIdAndBusinessStudentIdAndCompanyId(trainingId, businessStudentId, companyId))
                 .orElseThrow(() -> new EmptyResultDataAccessException(1));
 
+        return GenerateCertificate(training);
+    }
+
+    private byte[] GenerateCertificate(Training training) throws Exception {
         var certificateDto = modelMapper.map(training, CertificateDto.class);
         List<CertificateDto> certificateDtoList = Collections.singletonList(certificateDto);
 
