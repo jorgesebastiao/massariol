@@ -29,17 +29,16 @@
                     <input 
                         placeholder="Sua senha" 
                         formControlName="password" 
-                        [type]="fieldTextType ? 'text' : 'password'"
+                        [type]="showPassword ? 'text' : 'password'"
                         class="form-control form-control-lg rounded-0" 
                         id="password" 
                         autocomplete="new-password">
 
                     <div class="input-group-append">
                       <span class="input-group-text"
-                      (click)="toggleFieldTextType()"
-                      >
-                        <i [ngClass]="{'fas fa-eye': fieldTextType, 'fas fa-eye-slash': !fieldTextType }"></i>
-                      </span>
+                      (click)="onShowPassword()" *ngFor="let class of classes">
+                        <i class={{class}}></i>
+                    </span>
                     </div>
                   </div>
                 </div>
