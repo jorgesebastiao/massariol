@@ -10,6 +10,6 @@ public class UserCreateCommand {
     private String email;
     private String name;
     private PermissionType profile;
-    private long companyId;
+    private Long companyId;
 }
 

@@ -96,7 +96,7 @@ export class UserEditComponent implements OnInit {
             this.toastrService.error(errorMessage);
           });
       } else {
-        const userCreateCommand: UserCreateCommand = this.userForm.value;
+        const userCreateCommand: UserCreateCommand = new UserCreateCommand(this.userForm.value);
         this.userService.post(userCreateCommand).subscribe(() => {
           this.toastrService.success('Cadastro realizado com Sucesso!');
           this.isLoading = false;
@@ -127,5 +127,10 @@ export class UserEditComponent implements OnInit {
         ))
       )
     );
+  }
+  onChangeType() {
+    if (this.userForm.get('type').value == 'MASSARIOL') 
+      this.userForm.patchValue({ profile: '' });
+    
   }
 }

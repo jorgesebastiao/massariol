@@ -56,7 +56,7 @@ public class UserAppServiceImpl extends ApplicationServiceBaseImpl<User, Long> i
         if (emailInUse(user.getEmail(), user.getId()))
             throw new ExceptionEmailInUse();
 
-        if(user.getCompany() != null) {
+        if(command.getCompanyId() != null) {
             var company = companyAppService.getById(command.getCompanyId());
             user.setCompany(company);
             var permission = permissionAppService.getByPermission(PermissionType.ROLE_COMPANY_CERTIFICATE);
