@@ -34,11 +34,11 @@
           "name": "JDBC_DATABASE_USERNAME",
           "value": "JDBC_DATABASE_USERNAME_VALUE"
         },
-		{
+	      {
           "name": "EMAIL_SEND",
           "value": "EMAIL_SEND_VALUE"
         },
-		{
+        {
           "name": "EMAIL_PASSWORD",
           "value": "EMAIL_PASSWORD_VALUE"
         },
