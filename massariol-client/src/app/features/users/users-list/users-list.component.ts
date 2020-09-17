@@ -43,16 +43,16 @@ export class UsersListComponent implements OnInit {
   }
   
   setPage(pageInfo: any, filter?: string): void {
-    /*this.isLoading = true;
+    this.isLoading = true;
     this.page.pageNumber = pageInfo.offset;
-    this.supervisorService.getAll(this.page, filter).subscribe(pagedData => {
+    this.userService.getAll(this.page, filter).subscribe(pagedData => {
       this.page.size = pagedData.size;
       this.page.pageNumber = pagedData.pageable.pageNumber;
       this.page.totalPages = pagedData.totalPages;
       this.page.totalElements = pagedData.totalElements;
       this.rows = pagedData.content;
       this.isLoading = false;
-    });*/
+    });
   }
 
   newUser(newUser) {

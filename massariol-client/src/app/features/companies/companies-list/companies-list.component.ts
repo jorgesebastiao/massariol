@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Page } from '../../../shared/models';
 import { CompanyService } from '../shared/company.service';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { CompanyCreateUserComponent } from '../company-create-user/company-create-user.component';
 import { CompanyEditComponent } from '../company-edit/company-edit.component';
 
 @Component({
@@ -58,7 +57,7 @@ export class CompaniesListComponent implements OnInit {
     });
   }
 
-  newCompany(event) {
+  newCompany(company) {
     const config: ModalOptions = {
       backdrop: true,
       ignoreBackdropClick: true
@@ -91,7 +90,7 @@ export class CompaniesListComponent implements OnInit {
   searchCompany(search) {
     this.setPage(this.pageInfoInitial, search.search);
   }
-
+/*
   createUserCompany(companyId: number) {
     const initialState = {
       companyId: companyId,
@@ -140,5 +139,5 @@ export class CompaniesListComponent implements OnInit {
 
   isActive(companyId): boolean{
     return this.rows.find(p => p.id == companyId).active;
-  }
+  }*/
 }

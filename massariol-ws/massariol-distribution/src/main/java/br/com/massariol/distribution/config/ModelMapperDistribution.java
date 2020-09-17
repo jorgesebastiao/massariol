@@ -8,6 +8,7 @@ import br.com.massariol.distribution.controllers.signatures.mapping.SignatureVie
 import br.com.massariol.distribution.controllers.students.mapping.StudentViewModelMapper;
 import br.com.massariol.distribution.controllers.supervisors.mapping.SupervisorViewModelMapper;
 import br.com.massariol.distribution.controllers.trainings.mapping.TrainingViewModelMapper;
+import br.com.massariol.distribution.controllers.users.mapping.UserViewModelMapper;
 import org.modelmapper.ModelMapper;
 
 class ModelMapperDistribution {
@@ -20,5 +21,6 @@ class ModelMapperDistribution {
         TrainingViewModelMapper.profile(modelMapper);
         BusinessStudentViewModelMapper.profile(modelMapper);
         SignatureViewModelMapper.profile(modelMapper);
+        UserViewModelMapper.profile(modelMapper);
     }
 }

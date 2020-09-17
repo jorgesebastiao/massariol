@@ -22,6 +22,8 @@ public class User extends EntityBase<Long> {
     private String password;
     @Column(nullable = false)
     private boolean active;
+    @Column(nullable = false)
+    private UserType type;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "companyId", referencedColumnName = "id")
     private Company company;

@@ -1,5 +1,6 @@
 package br.com.massariol.application.users.commands;
 
+import br.com.massariol.domain.features.permissions.PermissionType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,7 +8,8 @@ import lombok.Setter;
 @Setter
 public class UserCreateCommand {
     private String email;
-    private String user;
-    private String password;
+    private String name;
+    private PermissionType profile;
+    private long companyId;
 }
 

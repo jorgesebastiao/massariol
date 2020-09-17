@@ -9,7 +9,7 @@ import java.util.HashSet;
 public class UserDomainServiceImpl implements  UserDomainService {
 
     @Override
-    public User generateUserForCompany(User user, Permission permission) {
+    public User createUser(User user, Permission permission) {
         user.setActive(true);
         var permissions = new HashSet<Permission>();
         permissions.add(permission);

@@ -8,11 +8,11 @@ import org.modelmapper.PropertyMap;
 
 public class UserCommandMapper {
     public static void profile(ModelMapper modelMapper) {
-        modelMapper.createTypeMap(CompanyUserCreateCommand.class, User.class);
+    /*    modelMapper.createTypeMap(CompanyUserCreateCommand.class, User.class);
         modelMapper.addMappings(companyUserCommandUserPropertyMap());
 
         modelMapper.createTypeMap(CompanyUserUpdateCommand.class, User.class);
-        modelMapper.addMappings(companyUserUpdateCommandUserPropertyMap());
+        modelMapper.addMappings(companyUserUpdateCommandUserPropertyMap());*/
     }
 
     static PropertyMap<CompanyUserCreateCommand, User> companyUserCommandUserPropertyMap() {
