@@ -38,13 +38,6 @@ export class AuthService {
         return Promise.resolve(null);
       })
       .catch(error => {
-        if (error.status === 400) {
-          console.log(error);
-          const failed = error.json();
-          if (failed.error === 'invalid_grant') {
-            return Promise.reject('usuario ou senha inválidos!!!');
-          }
-        }
         return Promise.reject(error);
       });
   }
