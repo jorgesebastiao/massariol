@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       }).catch(error => {
         if (error.status === 400) {
           if (error.error.error === 'invalid_grant') {
-            this.invalidGrant = 'Usuario ou senha inválidos!';
+            this.invalidGrant = 'E-mail ou senha inválidos!';
           }
         }
         this.isLoading = false;
