@@ -3,6 +3,7 @@ import { Page } from '../../../shared/models';
 import { Component, OnInit } from '@angular/core';
 import { TrainingService } from '../shared/training.service';
 import { TrainingEditComponent } from '../training-edit/training-edit.component';
+import { CertificateService } from '../../certificates/shared/certificate.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class TrainingsListComponent implements OnInit {
     bsModalRef: BsModalRef;
 
     constructor(private trainingService: TrainingService,
+        private certificateService: CertificateService,
         private modalService: BsModalService) {
         this.page = new Page();
     }
@@ -93,6 +95,15 @@ export class TrainingsListComponent implements OnInit {
           this.bsModalRef.content.onClose.subscribe(result => {
             this.setPage(this.pageInfoInitial);
           });
+    }
+
+    printCertificate(trainingId){
+    this.isLoading = true;
+    this.certificateService.getReportTraining(trainingId).subscribe(x => {
+      const url = window.URL.createObjectURL(x);
+      window.open(url);
+      this.isLoading = false;
+    });
     }
 
     deleteTraining(trainingId) {
