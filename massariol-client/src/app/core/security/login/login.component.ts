@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../shared';
 
 @Component({
@@ -15,10 +15,11 @@ export class LoginComponent implements OnInit {
 
   invalidGrant: string;
   isLoading: boolean;
+  fieldTextType: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService,
-              private router: Router) {
+    private authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -37,16 +38,21 @@ export class LoginComponent implements OnInit {
   login() {
     this.isLoading = true;
     this.authService.login(this.loginForm.get('user').value, this.loginForm.get('password').value)
-      .then( () => {
+      .then(() => {
         this.router.navigate(['']);
         this.isLoading = false;
       }).catch(error => {
-      if (error.status === 400) {
-        if (error.error.error === 'invalid_grant') {
-          this.invalidGrant = 'Usuario ou senha inválidos!';
+        if (error.status === 400) {
+          if (error.error.error === 'invalid_grant') {
+            this.invalidGrant = 'Usuario ou senha inválidos!';
+          }
         }
-      }
-      this.isLoading = false;
-    });
+        this.isLoading = false;
+      });
+  }
+
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }

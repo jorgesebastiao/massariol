@@ -39,7 +39,7 @@ export class UserEditComponent implements OnInit {
 
   ngOnInit() {
     this.onClose = new Subject();
-    this.isEdit = false;
+    this.isEdit = this.userId != null;
     this.title = 'Cadastro de usuário';
     this.initForms();
     this.initSelect();
@@ -57,10 +57,10 @@ export class UserEditComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       name: this.formBuilder.control('', [Validators.required]),
       email: this.formBuilder.control('', [Validators.email, Validators.required]),
-      type: this.formBuilder.control('', [Validators.required]),
-      resendPassword: this.formBuilder.control(false),
-      profile: this.formBuilder.control('', [Validators.required]),
-      companyId: this.formBuilder.control('',)
+      type: this.formBuilder.control({ value: '', disabled: this.isEdit }, [Validators.required]),
+      resendPassword: this.formBuilder.control({ value: false, disabled: !this.isEdit }),
+      profile: this.formBuilder.control(''),
+      companyId: this.formBuilder.control({ value: '', disabled: this.isEdit })
     });
   }
 
@@ -83,18 +83,18 @@ export class UserEditComponent implements OnInit {
     if (this.userForm.valid) {
       this.isLoading = true;
       if (this.isEdit) {
-         const userUpdateCommand: UserUpdateCommand = new UserUpdateCommand(this.userForm.value, this.userId);
-           this.userService.put(userUpdateCommand)
-               .subscribe(() => {
-                   this.toastrService.success('Edição realizada com Sucesso!');
-                   this.isLoading = false;
-                   this.onClose.next(true);
-                   this.bsModalRef.hide();
-               }, error => {
-                   this.isLoading = false;
-                   const errorMessage = error.status == 400 ? error.error.message : 'Ocorreu erro ao processar a solicitação';
-                   this.toastrService.error(errorMessage);
-               });
+        const userUpdateCommand: UserUpdateCommand = new UserUpdateCommand(this.userForm.value, this.userId);
+        this.userService.put(userUpdateCommand)
+          .subscribe(() => {
+            this.toastrService.success('Edição realizada com Sucesso!');
+            this.isLoading = false;
+            this.onClose.next(true);
+            this.bsModalRef.hide();
+          }, error => {
+            this.isLoading = false;
+            const errorMessage = error.status == 400 ? error.error.message : 'Ocorreu erro ao processar a solicitação';
+            this.toastrService.error(errorMessage);
+          });
       } else {
         const userCreateCommand: UserCreateCommand = this.userForm.value;
         this.userService.post(userCreateCommand).subscribe(() => {

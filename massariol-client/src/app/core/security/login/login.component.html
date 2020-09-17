@@ -25,8 +25,22 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text"><i class="fas fa-lock"></i></div>
                     </div>
-                    <input placeholder="Sua senha" formControlName="password" type="password"
-                           class="form-control form-control-lg rounded-0" id="password" autocomplete="new-password">
+
+                    <input 
+                        placeholder="Sua senha" 
+                        formControlName="password" 
+                        [type]="fieldTextType ? 'text' : 'password'"
+                        class="form-control form-control-lg rounded-0" 
+                        id="password" 
+                        autocomplete="new-password">
+
+                    <div class="input-group-append">
+                      <span class="input-group-text"
+                      (click)="toggleFieldTextType()"
+                      >
+                        <i [ngClass]="{'fas fa-eye': fieldTextType, 'fas fa-eye-slash': !fieldTextType }"></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
 

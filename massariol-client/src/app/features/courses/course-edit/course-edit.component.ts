@@ -25,6 +25,7 @@ export class CourseEditComponent implements OnInit {
   public optionsEditor: MdEditorOption = {
     resizable: false,
     showPreviewPanel: false,
+    usingFontAwesome5 : true,
     hideIcons: ['Image', 'Code', 'FullScreen', 'TogglePreview']
   };
 

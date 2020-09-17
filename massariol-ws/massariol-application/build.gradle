@@ -6,6 +6,7 @@ jar {
 dependencies {
     compile project(':massariol-domain')
     compile project(':massariol-infrastructure')
+    compile project(':massariol-mail')
 
     compile group: 'org.springframework.security', name: 'spring-security-crypto', version: '3.1.0.RELEASE'
 
@@ -26,4 +27,6 @@ dependencies {
     compile group: 'com.atlassian.commonmark', name: 'commonmark', version: '0.15.1'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 }

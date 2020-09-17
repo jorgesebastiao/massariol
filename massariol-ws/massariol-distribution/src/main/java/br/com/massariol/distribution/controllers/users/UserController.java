@@ -52,14 +52,14 @@ public class UserController extends ApiBaseController {
     @PostMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('write')")
     public ResponseEntity post(@RequestBody UserCreateCommand command) {
-       // userAppService.createUserCompany(command);
+        userAppService.add(command);
         return status(HttpStatus.CREATED).build();
     }
 
     @PutMapping
     @PreAuthorize("hasAuthority('ROLE_ADMIN_MASSARIOL') and #oauth2.hasScope('write')")
     public ResponseEntity put(@RequestBody UserUpdateCommand command) {
-       // userAppService.updateUserCompany(command);
+        userAppService.update(command);
         return status(HttpStatus.CREATED).build();
     }
 }

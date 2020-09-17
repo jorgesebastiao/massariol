@@ -24,13 +24,13 @@ export class UserUpdateCommand {
   public email: string;
   public name: string;
   public password: string;
-  public companyId: number;
-  constructor(user: any, userId: number, companyId: number) {
+  public resendPassword: boolean;
+  constructor(user: any, userId: number) {
     this.id = userId;
     this.name = user.name;
     this.email = user.email;
     this.password = user.password;
-    this.companyId = companyId;
+    this.resendPassword = user.resendPassword;
   }
 }
 

@@ -4,5 +4,6 @@ include 'massariol-application'
 include 'massariol-domain'
 include 'massariol-infrastructure'
 include 'massariol-security'
+include 'massariol-mail'
 include 'massariol-client'
 
