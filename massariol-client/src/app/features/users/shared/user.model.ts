@@ -1,4 +1,4 @@
-import {Company} from '../../companies/shared/company.model';
+import { Company } from '../../companies/shared/company.model';
 
 export class User {
   public id?: any;
@@ -11,10 +11,12 @@ export class User {
 export class UserCreateCommand {
   public email: string;
   public name: string;
+  public profile: string;
   public companyId: number;
   constructor(user: any) {
     this.name = user.name;
     this.email = user.email;
+    this.profile = !user.companyId ? user.profile : null;
     this.companyId = user.companyId;
   }
 }
