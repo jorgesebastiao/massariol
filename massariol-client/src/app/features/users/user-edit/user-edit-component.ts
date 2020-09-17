@@ -128,4 +128,9 @@ export class UserEditComponent implements OnInit {
       )
     );
   }
+  onChangeType() {
+    if (this.userForm.get('type').value == 'MASSARIOL') 
+      this.userForm.patchValue({ profile: '' });
+    
+  }
 }
