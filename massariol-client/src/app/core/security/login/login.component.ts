@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../shared';
 
 @Component({
@@ -15,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   invalidGrant: string;
   isLoading: boolean;
-  fieldTextType: boolean;
+  showPassword: boolean;
+  classes: string[];
 
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   initForm() {
+    this.showPassword = false;
+    this.classes = ['fas fa-eye-slash'];
     this.invalidGrant = '';
     this.loginForm = this.formBuilder.group({
       user: this.formBuilder.control('', [Validators.required]),
@@ -52,7 +54,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-  toggleFieldTextType() {
-    this.fieldTextType = !this.fieldTextType;
+  onShowPassword() {
+    this.showPassword = !this.showPassword;
+    this.classes = this.showPassword ? ['fas fa-eye'] : ['fas fa-eye-slash'];
   }
+
 }
