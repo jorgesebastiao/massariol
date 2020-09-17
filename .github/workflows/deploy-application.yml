@@ -70,21 +70,17 @@ jobs:
         JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
         JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
         JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
+        EMAIL_SEND: ${{secrets.EMAIL_SEND}}
+        EMAIL_PASSWORD: ${{secrets.EMAIL_PASSWORD}}
         SPRING_PROFILES_ACTIVE: prod
       with:
         task-definition: task-definition.json
         container-name: massariol
         image: ${{ steps.build-image.outputs.image }}
-        overwritten-envs: JDBC_DATABASE_URL,JDBC_DATABASE_USERNAME,JDBC_DATABASE_PASSWORD,JDBC_DATABASE_NAME,SPRING_PROFILES_ACTIVE
+        overwritten-envs: JDBC_DATABASE_URL,JDBC_DATABASE_USERNAME,JDBC_DATABASE_PASSWORD,JDBC_DATABASE_NAME,EMAIL_SEND,EMAIL_PASSWORD,SPRING_PROFILES_ACTIVE
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      env:
-        JDBC_DATABASE_URL: ${{secrets.JDBC_DATABASE_URL}}
-        JDBC_DATABASE_USERNAME: ${{secrets.JDBC_DATABASE_USERNAME}} 
-        JDBC_DATABASE_PASSWORD: ${{secrets.JDBC_DATABASE_PASSWORD}}
-        JDBC_DATABASE_NAME: ${{secrets.JDBC_DATABASE_NAME}}
-        SPRING_PROFILES_ACTIVE: prod
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: massariol-app-service
