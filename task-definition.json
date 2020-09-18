@@ -12,6 +12,11 @@
           "hostPort": 80,
           "protocol": "tcp",
           "containerPort": 80
+        },
+	{
+          "hostPort": 587,
+          "protocol": "tcp",
+          "containerPort": 587
         }
       ],
       "command": null,
