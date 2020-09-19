@@ -70,6 +70,8 @@ export class UserEditComponent implements OnInit {
   getUser() {
     this.isLoading = true;
     this.userService.getById(this.userId).subscribe(userResponse => {
+      if(userResponse.company)
+      this.setCompany(userResponse.company);
       this.userForm.patchValue(userResponse);
       this.isLoading = false;
     }, error => {
@@ -127,9 +129,27 @@ export class UserEditComponent implements OnInit {
       )
     );
   }
+
+  setCompany(company: any) {
+    var newCompanies: any[] = [];
+    newCompanies.push(company);
+    const page: Page = new Page();
+    this.companies = concat(
+        of(newCompanies),
+        this.companyInput.pipe(
+            distinctUntilChanged(),
+            tap(() => this.companyLoading = true),
+            switchMap(term => this.companyService.getAll(page, term).pipe(
+                map((data) => data.content),
+                catchError(() => of([])),
+                tap(() => this.companyLoading = false)
+            ))
+        )
+    );
+}
+
   onChangeType() {
     if (this.userForm.get('type').value == 'MASSARIOL') 
-      this.userForm.patchValue({ profile: '' });
-    
+      this.userForm.patchValue({ profile: '' });    
   }
 }

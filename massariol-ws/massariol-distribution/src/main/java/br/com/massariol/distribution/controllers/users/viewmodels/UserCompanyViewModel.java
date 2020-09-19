@@ -6,10 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserCompanyViewModel {
-
     private Long id;
-    private String name;
-    private String email;
-    private Long companyId;
-
+    private String corporateName;
+    private String cnpj;
 }

@@ -3,6 +3,7 @@ package br.com.massariol.domain.features.users;
 import br.com.massariol.domain.common.EntityBase;
 import br.com.massariol.domain.features.companies.Company;
 import br.com.massariol.domain.features.permissions.Permission;
+import br.com.massariol.domain.features.permissions.PermissionType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -34,5 +35,9 @@ public class User extends EntityBase<Long> {
 
     public void setEmail(String email) {
         this.email = email.toLowerCase().trim();
+    }
+
+    public PermissionType getPermissionType(){
+        return  permissions.stream().findFirst().get().getPermission();
     }
 }
