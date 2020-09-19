@@ -70,40 +70,40 @@ export class TrainingsListComponent implements OnInit {
 
         const config: ModalOptions = {
             initialState: initialState,
-            class:'modal-lg',
+            class: 'modal-lg',
             backdrop: true,
             ignoreBackdropClick: true
         };
-        
+
         this.bsModalRef = this.modalService.show(TrainingEditComponent, config);
         this.bsModalRef.content.onClose.subscribe(result => {
-        this.setPage(this.pageInfoInitial);
+            this.setPage(this.pageInfoInitial);
         });
     }
 
     updateTraining(trainingId) {
         const initialState = {
             trainingId: trainingId,
-          };
-          const config: ModalOptions = {
+        };
+        const config: ModalOptions = {
             initialState: initialState,
-            class:'modal-lg',
+            class: 'modal-lg',
             backdrop: true,
             ignoreBackdropClick: true
-          };
-          this.bsModalRef = this.modalService.show(TrainingEditComponent, config);
-          this.bsModalRef.content.onClose.subscribe(result => {
+        };
+        this.bsModalRef = this.modalService.show(TrainingEditComponent, config);
+        this.bsModalRef.content.onClose.subscribe(result => {
             this.setPage(this.pageInfoInitial);
-          });
+        });
     }
 
-    printCertificate(trainingId){
-    this.isLoading = true;
-    this.certificateService.getReportTraining(trainingId).subscribe(x => {
-      const url = window.URL.createObjectURL(x);
-      window.open(url);
-      this.isLoading = false;
-    });
+    printCertificate(trainingId) {
+        this.isLoading = true;
+        this.certificateService.getReportTraining(trainingId).subscribe(x => {
+            const url = window.URL.createObjectURL(x);
+            window.open(url);
+            this.isLoading = false;
+        });
     }
 
     deleteTraining(trainingId) {

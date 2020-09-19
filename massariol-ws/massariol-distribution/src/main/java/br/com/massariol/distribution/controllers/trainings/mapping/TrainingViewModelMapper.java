@@ -9,6 +9,8 @@ import br.com.massariol.domain.features.trainings.Training;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
+import javax.print.attribute.standard.Destination;
+
 public class TrainingViewModelMapper {
     public static void profile(ModelMapper modelMapper) {
         modelMapper.createTypeMap(Training.class, TrainingResumeViewModel.class);
@@ -50,14 +52,14 @@ public class TrainingViewModelMapper {
         return new PropertyMap<>() {
             protected void configure() {
                 map().setStudentId(source.getBusinessStudent().getStudent().getId());
+                map(source.getBusinessStudent().getStudent(), destination.getStudent());
                 map().setCompanyId(source.getBusinessStudent().getCompany().getId());
+                map(source.getBusinessStudent().getCompany(), destination.getCompany());
                 map().setInstructorId(source.getInstructor().getId());
                 map(source.getInstructor(), destination.getInstructor());
                 map().setSupervisorId(source.getSupervisor().getId());
                 map(source.getSupervisor(), destination.getSupervisor());
                 map().setCourseId(source.getCourse().getId());
-                map(source.getBusinessStudent().getCompany(), destination.getCompany());
-                map(source.getBusinessStudent().getStudent(), destination.getStudent());
             }
         };
     }
@@ -92,8 +94,8 @@ public class TrainingViewModelMapper {
         return new PropertyMap<>() {
             protected void configure() {
                 map().setId(source.getStudent().getId());
-                map().setName(source.getStudent().getPerson().getName());
-                map().setCpf(source.getStudent().getPerson().getCpf());
+                map().setName(source.getStudent().getName());
+                map().setCpf(source.getStudent().getCpf());
             }
         };
     }
