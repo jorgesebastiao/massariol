@@ -85,7 +85,7 @@ public class UserAppServiceImpl extends ApplicationServiceBaseImpl<User, Long> i
         if(command.isResendPassword()){
             String newPassword = RandomUtil.getNewPassword();
             userEmailService.sendNewPassword(newPassword, userInDataBase.getEmail(), userInDataBase.getName());
-            userInDataBase.setPassword(passwordEncoder.encode(userInDataBase.getPassword()));
+            userInDataBase.setPassword(passwordEncoder.encode(newPassword));
         }
         userRepository.save(userInDataBase);
     }

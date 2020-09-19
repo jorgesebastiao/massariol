@@ -17,8 +17,9 @@ public class BusinessStudentSpecification {
     static Specification<BusinessStudent> studentfilter(String filter) {
         return (root, query, builder) -> {
             var studentJoin = root.join("student");
-            var nameFilter = builder.like(studentJoin.get("name"), "%" + filter + "%");
-            var cpfFilter = builder.like(studentJoin.get("cpf"), "%" + filter + "%");
+            var personJoin = studentJoin.get("person");
+            var nameFilter = builder.like(personJoin.get("name"), "%" + filter + "%");
+            var cpfFilter = builder.like(personJoin.get("cpf"), "%" + filter + "%");
             return builder.or(nameFilter, cpfFilter);
         };
     }

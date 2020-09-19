@@ -106,15 +106,6 @@ export class TrainingsListComponent implements OnInit {
         });
     }
 
-    printCertificate(trainingId){
-    this.isLoading = true;
-    this.certificateService.getReportTraining(trainingId).subscribe(x => {
-      const url = window.URL.createObjectURL(x);
-      window.open(url);
-      this.isLoading = false;
-    });
-    }
-
     deleteTraining(trainingId) {
 
     }
