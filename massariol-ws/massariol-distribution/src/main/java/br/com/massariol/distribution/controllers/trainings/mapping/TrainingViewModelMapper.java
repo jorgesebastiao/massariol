@@ -9,6 +9,8 @@ import br.com.massariol.domain.features.trainings.Training;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
+import javax.print.attribute.standard.Destination;
+
 public class TrainingViewModelMapper {
     public static void profile(ModelMapper modelMapper) {
         modelMapper.createTypeMap(Training.class, TrainingResumeViewModel.class);
