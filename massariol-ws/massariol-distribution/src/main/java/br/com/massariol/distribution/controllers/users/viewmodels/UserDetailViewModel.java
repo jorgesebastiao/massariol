@@ -13,4 +13,6 @@ public class UserDetailViewModel {
     private String email;
     private UserType type;
     private PermissionType profile;
+    private Long companyId;
+    private UserCompanyViewModel company;
 }

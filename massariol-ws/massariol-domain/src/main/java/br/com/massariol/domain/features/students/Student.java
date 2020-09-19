@@ -27,4 +27,11 @@ public class Student extends EntityBase<Long> implements Signature {
     public String getSignature() {
         return  person.getSignature();
     }
+
+    public  String getName(){
+        return  person.getName();
+    }
+    public  String getCpf(){
+        return person.getCpf();
+    }
 }
